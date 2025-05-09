@@ -27,7 +27,8 @@ Route::get('/dashboard', function () {
 
 Route::middleware('auth')->group(function () {
     Route::view('about', 'about')->name('about');
-
+    Route::get('/user/register', [UserController::class, 'create'])->name('user.register');
+    Route::post('/user/register', [UserController::class, 'store'])->name('user.store');
     Route::get('users', [UserController::class, 'index'])->name('users.index');
 
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

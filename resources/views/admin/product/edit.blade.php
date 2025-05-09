@@ -127,7 +127,7 @@
 
                             <!-- Input Field -->
                             <textarea id="keyword-input" rows="3" placeholder="Type keyword and press Enter"
-                                class="w-full p-2 border rounded-md resize-none"></textarea>
+                                class="w-full p-2 border rounded-md resize-none">{{ json_encode($request->focus_keywords) }}</textarea>
                         </div>
 
                     </div>

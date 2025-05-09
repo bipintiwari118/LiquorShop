@@ -59,7 +59,7 @@
 
                             <!-- Input Field -->
                             <textarea id="keyword-input" rows="3" placeholder="Type keyword and press Enter"
-                                class="w-full p-2 border rounded-md resize-none">{{ $category->focus_keywords }}</textarea>
+                                class="w-full p-2 border rounded-md resize-none">{{ implode(', ', json_decode($category->focus_keywords)) }}</textarea>
                         </div>
 
                     </div>

@@ -32,7 +32,7 @@ class CategoryController extends Controller
             'name'=>$request->name,
             'meta_title' => $request->meta_title,
             'meta_description' => $request->meta_description,
-            'focus_keywords' => $request->focus_keywords ? json_encode($request->focus_keywords) : null,
+            'focus_keywords' =>json_encode($request->focus_keywords),
         ]);
 
 
@@ -82,7 +82,7 @@ class CategoryController extends Controller
             'name' => $request->name,
             'meta_title' => $request->meta_title,
             'meta_description' => $request->meta_description,
-            'focus_keywords' => $request->focus_keywords ? json_encode($request->focus_keywords) : null,
+            'focus_keywords' => json_encode($request->focus_keywords),
         ]);
 
         return redirect()->route('category.list')->with('success', 'Category  updated successfully.');

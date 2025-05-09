@@ -55,7 +55,7 @@ class ProductController extends Controller
             'alcohol' => $request->alcohol,
             'meta_title' => $request->meta_title,
             'meta_description' => $request->meta_description,
-            'focus_keywords' => $request->focus_keywords ? json_encode($request->focus_keywords) : null,
+            'focus_keywords' =>json_encode($request->focus_keywords),
             'featured_image' => $featuredImagePath,
         ]);
 
@@ -132,7 +132,7 @@ class ProductController extends Controller
                 'alcohol' => $request->alcohol,
                 'meta_title' => $request->meta_title,
                 'meta_description' => $request->meta_description,
-                'focus_keywords' => $request->focus_keywords ? json_encode($request->focus_keywords) : null,
+                'focus_keywords' =>json_encode($request->focus_keywords),
                 'status' => $request->status,
                 'featured_image' => $featuredImagePath,
             ]);
