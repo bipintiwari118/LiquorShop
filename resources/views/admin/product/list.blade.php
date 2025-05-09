@@ -78,7 +78,7 @@
                                         <p class="text-gray-900 whitespace-no-wrap">$ {{ $product->price }}</p>
                                     </td>
                                     <td class="px-5 py-5 border-b border-gray-200 bg-white text-[16px]">
-                                        <img src="" alt="">
+                                        <img src="{{ asset($product->featured_image) }}" alt="" class="w-[30px] h-[30px]">
                                     </td>
                                     <td class="px-5 py-5 border-b border-gray-200 bg-white text-[16px] text-right">
                                         <a href="#" class="text-blue-500 hover:text-blue-700">Edit</a>

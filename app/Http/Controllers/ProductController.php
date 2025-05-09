@@ -40,7 +40,7 @@ class ProductController extends Controller
 
         $featuredImage = $request->file('featured_image');
         $featuredImageName = time().'.'.$featuredImage->extension();
-        $featuredImage->move(public_path('Product/images/featured_image/'),$featuredImage);
+        $featuredImage->move(public_path('Product/images/featured_image/'),$featuredImageName);
         $featuredImagePath = 'Product/images/featured_image/' . $featuredImageName;
 
         Product::create([
