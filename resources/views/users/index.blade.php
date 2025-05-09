@@ -39,6 +39,7 @@
                             <th class="px-4 py-3">ID</th>
                             <th class="px-4 py-3">Name</th>
                             <th class="px-4 py-3">Email</th>
+                            <th class="px-4 py-3">Action</th>
                         </tr>
                     </thead>
                     <tbody class="bg-white divide-y">
@@ -52,6 +53,13 @@
                                 </td>
                                 <td class="px-4 py-3 text-sm">
                                     {{ $user->email }}
+                                </td>
+                                <td class="px-4 py-3">
+                                    <a href="{{ route('user.edit', $user->id) }}"
+                                        class="bg-blue-600  px-[15px] py-[5px] rounded-md text-white mr-[30px] hover:bg-blue-800">Edit</a>
+                                    <a href="{{ route('user.delete', $user->id) }}"
+                                        class="bg-red-600  px-[15px] py-[5px] rounded-md text-white  hover:bg-red-800"
+                                        onclick="alert('Are you sure to delete this product')">Delete</a>
                                 </td>
                             </tr>
                         @endforeach

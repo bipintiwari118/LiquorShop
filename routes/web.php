@@ -29,6 +29,9 @@ Route::middleware('auth')->group(function () {
     Route::view('about', 'about')->name('about');
     Route::get('/user/register', [UserController::class, 'create'])->name('user.register');
     Route::post('/user/register', [UserController::class, 'store'])->name('user.store');
+    Route::get('/user/edit/{id}', [UserController::class, 'edit'])->name('user.edit');
+    Route::post('/user/update/{id}', [UserController::class, 'update'])->name('user.update');
+     Route::get('/user/delete/{id}', [UserController::class, 'delete'])->name('user.delete');
     Route::get('users', [UserController::class, 'index'])->name('users.index');
 
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
