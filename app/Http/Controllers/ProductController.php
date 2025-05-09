@@ -1,0 +1,70 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
+use App\Models\Product;
+use App\Models\Category;
+use Illuminate\Support\Facades\Validator;
+
+
+class ProductController extends Controller
+{
+
+    public function create(){
+        $categories = Category::all();
+        return view('admin.product.add', compact('categories'));
+
+    }
+
+
+    public function storeProduct(Request $request){
+
+        $validator = Validator::make($request->all(), [
+            'title' => 'required',
+            'description' => 'string',
+            'price' => 'required|numeric',
+            'category' => 'required',
+            'volume' => 'required',
+            'brand' => 'nullable',
+            'status' => 'required|in:active,block',
+            'featured_image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'focus_keywords' => 'array',
+        ]);
+
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
+
+        $featuredImage = $request->file('featured_image');
+        $featuredImageName = time().'.'.$featuredImage->extension();
+        $featuredImage->move(public_path('Product/images/featured_image/'),$featuredImage);
+        $featuredImagePath = 'Product/images/featured_image/' . $featuredImageName;
+
+        Product::create([
+            'title' => $request->title,
+            'description' => $request->description,
+            'price' => $request->price,
+            'category' => $request->category,
+            'volume' => $request->volume,
+            'brand' => $request->brand,
+            'status' => $request->status,
+            'meta_title' => $request->meta_title,
+            'meta_description' => $request->meta_description,
+            'focus_keywords' => $request->focus_keywords ? json_encode($request->focus_keywords) : null,
+            'featured_image' => $featuredImagePath,
+        ]);
+
+        return redirect()->route('product.create')->with('success', 'Product created successfully.');
+
+    }
+
+
+    public function list(){
+        $products = Product::all();
+        return view('admin.product.list', compact('products'));
+    }
+
+
+}
