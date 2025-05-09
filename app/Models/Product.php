@@ -16,6 +16,7 @@ class Product extends Model
         'description',
         'price',
         'category',
+        'alcohol',
        'featured_image',
         'status',
          'meta_title', 'meta_description', 'focus_keywords','volume','brand'

@@ -19,6 +19,7 @@ return new class extends Migration
             $table->double('price',10,2);
             $table->string('category');
             $table->string('volume');
+            $table->string('alcohol')->nullable();
             $table->string('brand')->nullable();
             $table->enum('status', ['active', 'block']);
             $table->string('featured_image')->nullable();

@@ -49,6 +49,15 @@
                                 <div class="text-red-500 text-sm mt-1 ml-3">{{ $message }}</div>
                             @enderror
                         </div>
+
+                          <div class="w-full flex flex-col gap-y-2">
+                            <label for="" class="text-[20px] font-[500]">Alcohol Per(%): <span
+                                class="text-red-600">*</span></label>
+                            <input type="text" name="alcohol" id="" class="w-full rounded-md">
+                            @error('alcohol')
+                                <div class="text-red-500 text-sm mt-1 ml-3">{{ $message }}</div>
+                            @enderror
+                        </div>
                         <div class="w-full flex flex-col gap-y-2">
                             <label for="" class="text-[20px] font-[500]">Volume: <span
                                 class="text-red-600">*</span></label>

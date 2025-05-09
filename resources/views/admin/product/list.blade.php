@@ -22,6 +22,10 @@
                             <tr>
                                 <th
                                     class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-[16px] font-bold text-gray-600 uppercase tracking-wider">
+                                    ID
+                                </th>
+                                <th
+                                    class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-[16px] font-bold text-gray-600 uppercase tracking-wider">
                                     Product Name
                                 </th>
                                 <th
@@ -30,11 +34,20 @@
                                 </th>
                                 <th
                                     class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-[16px] font-bold text-gray-600 uppercase tracking-wider">
+                                    Brand
+                                </th>
+
+                                <th
+                                    class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-[16px] font-bold text-gray-600 uppercase tracking-wider">
+                                    Volume
+                                </th>
+                                <th
+                                    class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-[16px] font-bold text-gray-600 uppercase tracking-wider">
                                     Price
                                 </th>
                                 <th
                                     class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-[16px] font-bold text-gray-600 uppercase tracking-wider">
-                                    Stock
+                                    Image
                                 </th>
                                 <th
                                     class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-right text-[16px] font-bold text-gray-600 uppercase tracking-wider">
@@ -44,24 +57,35 @@
                         </thead>
                         <tbody>
                             <!-- Example Row -->
-                            <tr>
-                                <td class="px-5 py-5 border-b border-gray-200 bg-white text-[16px]">
-                                    <p class="text-gray-900 whitespace-no-wrap">Product 1</p>
-                                </td>
-                                <td class="px-5 py-5 border-b border-gray-200 bg-white text-[16px]">
-                                    <p class="text-gray-900 whitespace-no-wrap">Category 1</p>
-                                </td>
-                                <td class="px-5 py-5 border-b border-gray-200 bg-white text-[16px]">
-                                    <p class="text-gray-900 whitespace-no-wrap">$100</p>
-                                </td>
-                                <td class="px-5 py-5 border-b border-gray-200 bg-white text-[16px]">
-                                    <p class="text-gray-900 whitespace-no-wrap">50</p>
-                                </td>
-                                <td class="px-5 py-5 border-b border-gray-200 bg-white text-[16px] text-right">
-                                    <a href="#" class="text-blue-500 hover:text-blue-700">Edit</a>
-                                    <a href="#" class="text-red-500 hover:text-red-700 ml-4">Delete</a>
-                                </td>
-                            </tr>
+                            @foreach ($products as $product)
+                                <tr>
+                                    <td class="px-5 py-5 border-b border-gray-200 bg-white text-[16px]">
+                                        <p class="text-gray-900 whitespace-no-wrap">{{ $product->id }}</p>
+                                    </td>
+                                    <td class="px-5 py-5 border-b border-gray-200 bg-white text-[16px]">
+                                        <p class="text-gray-900 whitespace-no-wrap">{{ $product->title }}</p>
+                                    </td>
+                                    <td class="px-5 py-5 border-b border-gray-200 bg-white text-[16px]">
+                                        <p class="text-gray-900 whitespace-no-wrap">{{ $product->category }}</p>
+                                    </td>
+                                    <td class="px-5 py-5 border-b border-gray-200 bg-white text-[16px]">
+                                        <p class="text-gray-900 whitespace-no-wrap">{{ $product->brand }}</p>
+                                    </td>
+                                    <td class="px-5 py-5 border-b border-gray-200 bg-white text-[16px]">
+                                        <p class="text-gray-900 whitespace-no-wrap">{{ $product->volume }} ml</p>
+                                    </td>
+                                    <td class="px-5 py-5 border-b border-gray-200 bg-white text-[16px]">
+                                        <p class="text-gray-900 whitespace-no-wrap">$ {{ $product->price }}</p>
+                                    </td>
+                                    <td class="px-5 py-5 border-b border-gray-200 bg-white text-[16px]">
+                                        <img src="" alt="">
+                                    </td>
+                                    <td class="px-5 py-5 border-b border-gray-200 bg-white text-[16px] text-right">
+                                        <a href="#" class="text-blue-500 hover:text-blue-700">Edit</a>
+                                        <a href="#" class="text-red-500 hover:text-red-700 ml-4">Delete</a>
+                                    </td>
+                                </tr>
+                            @endforeach
                             <!-- Add more rows as needed -->
                         </tbody>
                     </table>
