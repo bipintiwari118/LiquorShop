@@ -9,7 +9,7 @@
                 <div class="p-6 bg-white border-b border-gray-200">
                     <div class="overflow-x-auto">
                         @if (Session::has('success'))
-                            <div class="text-green-500 text-sm mt-1 p-[20px]" role="alert">
+                            <div class="text-green-500 text-[20px] mt-1 p-[20px]" role="alert">
                                 {{ Session::get('success') }}
                             </div>
                         @endif
