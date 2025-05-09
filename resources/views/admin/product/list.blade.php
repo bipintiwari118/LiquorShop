@@ -78,11 +78,11 @@
                                         <p class="text-gray-900 whitespace-no-wrap">$ {{ $product->price }}</p>
                                     </td>
                                     <td class="px-5 py-5 border-b border-gray-200 bg-white text-[16px]">
-                                        <img src="{{ asset($product->featured_image) }}" alt="" class="w-[30px] h-[30px]">
+                                        <img src="{{ asset($product->featured_image) }}" alt="" class="w-[50px] h-[50px]">
                                     </td>
                                     <td class="px-5 py-5 border-b border-gray-200 bg-white text-[16px] text-right">
                                         <a href="#" class="text-blue-500 hover:text-blue-700">Edit</a>
-                                        <a href="#" class="text-red-500 hover:text-red-700 ml-4">Delete</a>
+                                        <a href="#" class="text-red-500 hover:text-red-700 ml-4" onclick="alert('Are you sure to delete this product')">Delete</a>
                                     </td>
                                 </tr>
                             @endforeach
