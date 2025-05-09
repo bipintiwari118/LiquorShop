@@ -4,7 +4,7 @@
     </x-slot>
 
     <div>
-        <form action="" method="POST" enctype="multipart/form-data">
+        <form action="{{ route('product.update',$product->slug) }}" method="POST" enctype="multipart/form-data">
             @csrf
             <button class="bg-blue-600 text-white px-[20px] py-[10px]  mb-[30px] float-right mr-[50px]">Publish</button>
             <div class="h-auto w-full">
@@ -76,10 +76,10 @@
                                     class="text-red-600">*</span></label>
                             <input type="file" name="featured_image" id="featured_image" class="w-full">
                             <div class="">
-                                @if ($trip->featured_image)
-                                    <p class="text-gray-500 mb-[5px]">{{ $trip->featured_image }}</p>
-                                    <img id="image_preview" src="{{ asset($trip->featured_image) }}"
-                                        alt="{{ $trip->featured_image }}"
+                                @if ($product->featured_image)
+                                    <p class="text-gray-500 mb-[5px]">{{ $product->featured_image }}</p>
+                                    <img id="image_preview" src="{{ asset($product->featured_image) }}"
+                                        alt="{{ $product->featured_image }}"
                                         class="w-[100px] h-[120px] object-cover rounded">
                                 @else
                                     <p class="text-gray-500">No image uploaded.</p>
@@ -147,13 +147,13 @@
                     <div class="w-1/4 shadow-md h-auto p-[20px]">
                         <div class="w-full flex flex-col gap-y-2 mt-[10px]">
                             <label for="" class="text-[20px] font-[500]">Meta Title</label>
-                            <input type="text" class="w-full rounded-md border-gray-300" name="meta_title"
+                            <input type="text" value="{{ $product->meta_title }}" class="w-full rounded-md border-gray-300" name="meta_title"
                                 id="">
 
                         </div>
                         <div class="w-full flex flex-col gap-y-2 mt-6">
                             <label for="" class="text-[20px] font-[500]">Meta Description</label>
-                            <textarea name="meta_description" id="" cols="30" rows="6" class="w-full"></textarea>
+                            <textarea name="meta_description" id="" cols="30" rows="6" class="w-full">{{ $product->meta_description }}</textarea>
 
                         </div>
                     </div>

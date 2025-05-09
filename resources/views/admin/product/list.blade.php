@@ -52,6 +52,10 @@
                                 </th>
                                 <th
                                     class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-[16px] font-bold text-gray-600 uppercase tracking-wider">
+                                    Status
+                                </th>
+                                <th
+                                    class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-[16px] font-bold text-gray-600 uppercase tracking-wider">
                                     Image
                                 </th>
                                 <th
@@ -83,6 +87,12 @@
                                         <p class="text-gray-900 whitespace-no-wrap">$ {{ $product->price }}</p>
                                     </td>
                                     <td class="px-5 py-5 border-b border-gray-200 bg-white text-[16px]">
+                                        <span class="px-3 py-1 inline-flex text-xs leading-5 font-semibold rounded-full
+                                            {{ $product->status === 'active' ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800' }}">
+                                            {{ ucfirst($product->status) }}
+                                        </span>
+                                    </td>
+                                    <td class="px-5 py-5 border-b border-gray-200 bg-white text-[16px]">
                                         <img src="{{ asset($product->featured_image) }}" alt=""
                                             class="w-[50px] h-[50px]">
                                     </td>
@@ -96,8 +106,13 @@
                             @endforeach
                             <!-- Add more rows as needed -->
                         </tbody>
+
                     </table>
                 </div>
+            </div>
+             <!-- Pagination Section -->
+            <div class="mt-4">
+                {{ $products->links() }}
             </div>
         </div>
     </div>

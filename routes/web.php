@@ -52,7 +52,7 @@ Route::post('/products/store', [ProductController::class, 'storeProduct'])->name
 Route::get('/products/list', [ProductController::class, 'list'])->name('product.list');
 Route::get('/products/delete/{slug}', [ProductController::class, 'delete'])->name('product.delete');
 Route::get('/products/edit/{slug}', [ProductController::class, 'edit'])->name('product.edit');
-// Route::post('/products/edit/{id}', [ProductController::class, 'updateProduct'])->name('admin.update.product');
+Route::post('/products/edit/{slug}', [ProductController::class,'update'])->name('product.update');
 
 });
 
