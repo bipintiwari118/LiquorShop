@@ -78,5 +78,16 @@ class ProductController extends Controller
         }
     }
 
+    
+    public function edit($slug){
+        $product = Product::where('slug', $slug)->first();
+        if ($product) {
+            $categories = Category::all();
+            return view('admin.product.edit', compact('product', 'categories'));
+        } else {
+            return redirect()->back()->with('error', 'Product not found.');
+        }
+    }
+
 
 }

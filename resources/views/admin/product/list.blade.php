@@ -18,6 +18,11 @@
             <div class="overflow-x-auto">
                 <div class="min-w-full shadow rounded-lg overflow-hidden">
                     <table class="min-w-full leading-normal">
+                        @if (Session::has('success'))
+                            <div class="text-green-500 text-[20px] mt-1  p-[10px]" role="alert">
+                                {{ Session::get('success') }}
+                            </div>
+                        @endif
                         <thead>
                             <tr>
                                 <th
@@ -78,11 +83,14 @@
                                         <p class="text-gray-900 whitespace-no-wrap">$ {{ $product->price }}</p>
                                     </td>
                                     <td class="px-5 py-5 border-b border-gray-200 bg-white text-[16px]">
-                                        <img src="{{ asset($product->featured_image) }}" alt="" class="w-[50px] h-[50px]">
+                                        <img src="{{ asset($product->featured_image) }}" alt=""
+                                            class="w-[50px] h-[50px]">
                                     </td>
                                     <td class="px-5 py-5 border-b border-gray-200 bg-white text-[16px] text-right">
-                                        <a href="#" class="text-blue-500 hover:text-blue-700">Edit</a>
-                                        <a href="{{ route('product.delete',$product->slug) }}" class="text-red-500 hover:text-red-700 ml-4" onclick="alert('Are you sure to delete this product')">Delete</a>
+                                        <a href="{{ route('product.edit',$product->slug) }}" class="text-blue-500 hover:text-blue-700">Edit</a>
+                                        <a href="{{ route('product.delete', $product->slug) }}"
+                                            class="text-red-500 hover:text-red-700 ml-4"
+                                            onclick="alert('Are you sure to delete this product')">Delete</a>
                                     </td>
                                 </tr>
                             @endforeach
