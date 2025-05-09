@@ -16,6 +16,9 @@ class CategoryController extends Controller
     public function store(Request $request){
         $validator=Validator::make($request->all(),[
             'name'=>'required',
+            'focus_keywords' => 'array',
+            'meta_title' => 'nullable|string',
+            'meta_description' => 'nullable|string',
         ]);
 
         if ($validator->fails()) {
@@ -27,6 +30,9 @@ class CategoryController extends Controller
 
         Category::create([
             'name'=>$request->name,
+            'meta_title' => $request->meta_title,
+            'meta_description' => $request->meta_description,
+            'focus_keywords' => $request->focus_keywords ? json_encode($request->focus_keywords) : null,
         ]);
 
 
@@ -58,6 +64,9 @@ class CategoryController extends Controller
 
         $validator = Validator::make($request->all(), [
             'name' => 'required',
+            'focus_keywords' => 'array',
+            'meta_title' => 'nullable|string',
+            'meta_description' => 'nullable|string',
 
         ]);
 
@@ -71,6 +80,9 @@ class CategoryController extends Controller
         // Update the setting
         $category->update([
             'name' => $request->name,
+            'meta_title' => $request->meta_title,
+            'meta_description' => $request->meta_description,
+            'focus_keywords' => $request->focus_keywords ? json_encode($request->focus_keywords) : null,
         ]);
 
         return redirect()->route('category.list')->with('success', 'Category  updated successfully.');

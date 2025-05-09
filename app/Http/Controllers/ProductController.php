@@ -65,7 +65,7 @@ class ProductController extends Controller
 
 
     public function list(){
-        $products = Product::where('status', 'active')->paginate(1);
+        $products = Product::paginate(6);
         return view('admin.product.list', compact('products'));
     }
 
