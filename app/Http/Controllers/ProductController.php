@@ -68,4 +68,15 @@ class ProductController extends Controller
     }
 
 
+    public function delete($slug){
+        $product = Product::where('slug', $slug)->first();
+        if ($product) {
+            $product->delete();
+            return redirect()->back()->with('success', 'Product deleted successfully.');
+        } else {
+            return redirect()->back()->with('error', 'Product not found.');
+        }
+    }
+
+
 }

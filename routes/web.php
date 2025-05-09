@@ -50,7 +50,7 @@ Route::get('/category/delete/{id}', [CategoryController::class, 'delete'])->name
 Route::get('/products/create', [ProductController::class, 'create'])->name('product.create');
 Route::post('/products/store', [ProductController::class, 'storeProduct'])->name('product.store');
 Route::get('/products/list', [ProductController::class, 'list'])->name('product.list');
-// Route::get('/products/delete/{slug}', [ProductController::class, 'deleteProduct'])->name('admin.delete.product');
+Route::get('/products/delete/{slug}', [ProductController::class, 'delete'])->name('product.delete');
 // Route::get('/products/edit/{slug}', [ProductController::class, 'editProduct'])->name('admin.edit.product');
 // Route::post('/products/edit/{id}', [ProductController::class, 'updateProduct'])->name('admin.update.product');
 
