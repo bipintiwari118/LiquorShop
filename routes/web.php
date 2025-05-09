@@ -41,9 +41,9 @@ Route::middleware('auth')->group(function () {
 Route::get('/category/create', [CategoryController::class, 'create'])->name('category.create');
 Route::post('/category/create', [CategoryController::class, 'store'])->name('category.store');
 Route::get('/category/list', [CategoryController::class, 'list'])->name('category.list');
-Route::get('/category/edit/{id}', [CategoryController::class, 'edit'])->name('category.edit');
-Route::post('/category/update/{id}', [CategoryController::class, 'update'])->name('category.update');
-Route::get('/category/delete/{id}', [CategoryController::class, 'delete'])->name('category.delete');
+Route::get('/category/edit/{slug}', [CategoryController::class, 'edit'])->name('category.edit');
+Route::post('/category/update/{slug}', [CategoryController::class, 'update'])->name('category.update');
+Route::get('/category/delete/{slug}', [CategoryController::class, 'delete'])->name('category.delete');
 
 
      // Products route start

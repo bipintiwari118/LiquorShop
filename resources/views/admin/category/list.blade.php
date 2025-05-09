@@ -47,11 +47,11 @@
                                     </td>
 
                                     <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
-                                        <a href="{{ route('category.edit', $category->id) }}"
+                                        <a href="{{ route('category.edit', $category->slug) }}"
                                             class="inline-block px-4 py-2 text-sm font-medium text-white bg-indigo-600 rounded hover:bg-indigo-700">
                                             Edit
                                         </a>
-                                        <a href="{{ route('category.delete', $category->id) }}"
+                                        <a href="{{ route('category.delete', $category->slug) }}"
                                             class="inline-block px-4 py-2 text-sm font-medium text-white bg-red-600 rounded hover:bg-red-700 ml-2" onclick="alert('Are you sure to delete?')">
                                             Delete
                                         </a>

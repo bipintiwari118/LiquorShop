@@ -50,17 +50,17 @@ class CategoryController extends Controller
 
 
 
-    public function edit($id){
+    public function edit($slug){
 
-        $category=Category::findOrFail($id);
+        $category=Category::where('slug',$slug)->firstOrFail();
 
         return view('admin.category.edit',compact('category'));
     }
 
 
-    public function update(Request $request,$id){
+    public function update(Request $request,$slug){
 
-        $category=Category::findOrFail($id);
+        $category=Category::where('slug',$slug)->firstOrFail();
 
         $validator = Validator::make($request->all(), [
             'name' => 'required',
@@ -88,8 +88,8 @@ class CategoryController extends Controller
         return redirect()->route('category.list')->with('success', 'Category  updated successfully.');
     }
 
-    public function delete($id){
-        $category=Category::findOrFail($id);
+    public function delete($slug){
+        $category=Category::where('slug',$slug)->firstOrFail();
 
         $category->delete();
 
