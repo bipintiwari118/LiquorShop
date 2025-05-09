@@ -23,7 +23,7 @@ class ProductController extends Controller
 
         $validator = Validator::make($request->all(), [
             'title' => 'required',
-            'description' => 'string',
+            'description' => 'nullable',
             'price' => 'required|numeric',
             'category' => 'required',
             'volume' => 'required',
@@ -32,6 +32,8 @@ class ProductController extends Controller
             'status' => 'required|in:active,block',
             'featured_image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
             'focus_keywords' => 'array',
+            'meta_title' => 'nullable|string',
+            'meta_description' => 'nullable|string',
         ]);
 
         if ($validator->fails()) {
@@ -94,7 +96,7 @@ class ProductController extends Controller
         if ($product) {
             $validator = Validator::make($request->all(), [
                 'title' => 'required',
-                'description' => 'string',
+                'description' => 'required',
                 'price' => 'required|numeric',
                 'category' => 'required',
                 'volume' => 'required',
@@ -103,6 +105,8 @@ class ProductController extends Controller
                 'status' => 'required|in:active,block',
                 'featured_image' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
                 'focus_keywords' => 'array',
+                'meta_title' => 'nullable|string',
+                'meta_description' => 'nullable|string',
             ]);
 
             if ($validator->fails()) {

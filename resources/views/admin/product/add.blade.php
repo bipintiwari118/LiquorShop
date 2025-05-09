@@ -126,7 +126,7 @@
                     <div class="w-3/5 h-auto shadow-md p-[20px] flex flex-col items-center gap-y-[30px]">
                         <div class="w-full flex flex-col gap-y-2">
                             <label for="" class="text-[20px] font-[500] mb-[10px]">Descriptions: </label>
-                            <div id="description" name="description"></div>
+                            <textarea id="description" name="description"></textarea>
                         </div>
 
                     </div>

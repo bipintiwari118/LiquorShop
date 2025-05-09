@@ -6,7 +6,7 @@
     <div>
         <form action="{{ route('product.update',$product->slug) }}" method="POST" enctype="multipart/form-data">
             @csrf
-            <button class="bg-blue-600 text-white px-[20px] py-[10px]  mb-[30px] float-right mr-[50px]">Publish</button>
+            <button class="bg-blue-600 text-white px-[20px] py-[10px]  mb-[30px] float-right mr-[50px]">Updated</button>
             <div class="h-auto w-full">
                 @if (Session::has('success'))
                     <div class="text-green-500 text-[20px] mt-1  p-[10px]" role="alert">
@@ -139,7 +139,7 @@
                     <div class="w-3/5 h-auto shadow-md p-[20px] flex flex-col items-center gap-y-[30px]">
                         <div class="w-full flex flex-col gap-y-2">
                             <label for="" class="text-[20px] font-[500] mb-[10px]">Descriptions: </label>
-                            <div id="description" name="description">{{ $product->description }}</div>
+                            <textarea id="description" name="description">{{ $product->description }}</textarea>
                         </div>
 
                     </div>
