@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Spatie\Permission\Models\Role;
+use Spatie\Permission\Models\Permission;
+use Illuminate\Support\Facades\DB;
 
 class RoleController extends Controller
 {
@@ -71,6 +73,24 @@ class RoleController extends Controller
     {
         $role = Role::findOrFail($id);
         $permissions = Permission::all();
-        return view('admin.roles-permissions.roles.add-permission', compact('role', 'permissions'));
+        $rolePermissions = DB::table('role_has_permissions')
+            ->where('role_id', $id)
+            ->pluck('permission_id')
+            ->toArray();
+        return view('admin.roles-permissions.roles.add-permission', compact('role', 'permissions', 'rolePermissions'));
+    }
+
+    public function storePermissionToRole(Request $request, $id)
+    {
+        // Validate and store the permission
+        $request->validate([
+            'permissions' => 'required|array',
+        ]);
+
+        // Store the permission in the database
+        $role = Role::findOrFail($id);
+        $role->syncPermissions($request->permissions);
+
+        return redirect()->route('role.list')->with('success', 'Role permissions updated successfully.');
     }
 }

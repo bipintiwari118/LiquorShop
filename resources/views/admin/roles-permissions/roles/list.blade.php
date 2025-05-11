@@ -57,7 +57,7 @@
                                         </a>
 
                                           <a href="{{ route('role.permission', $role->id) }}"
-                                            class="inline-block px-4 py-2 text-sm font-medium text-white bg-red-600 rounded hover:bg-red-700 ml-2" onclick="alert('Are you sure to delete?')">
+                                            class="inline-block px-4 py-2 text-sm font-medium text-white bg-green-600 rounded hover:bg-green-700 ml-2">
                                             Add / Edit Role Permission
                                         </a>
                                     </td>

@@ -68,6 +68,7 @@ Route::get('/role/edit/{id}', [RoleController::class, 'edit'])->name('role.edit'
 Route::post('/role/update/{id}', [RoleController::class, 'update'])->name('role.update');
 Route::get('/role/delete/{id}', [RoleController::class, 'delete'])->name('role.delete');
 Route::get('/role/permission/{id}', [RoleController::class, 'addPermissionToRole'])->name('role.permission');
+Route::post('/role/permission/store/{id}', [RoleController::class, 'storePermissionToRole'])->name('update.role.permission');
 
 
      // Products route start
