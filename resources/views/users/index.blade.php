@@ -58,8 +58,10 @@
                                     <a href="{{ route('user.edit', $user->id) }}"
                                         class="bg-blue-600  px-[15px] py-[5px] rounded-md text-white mr-[30px] hover:bg-blue-800">Edit</a>
                                     <a href="{{ route('user.delete', $user->id) }}"
-                                        class="bg-red-600  px-[15px] py-[5px] rounded-md text-white  hover:bg-red-800"
+                                        class="bg-red-600  px-[15px] py-[5px] rounded-md mr-[30px] text-white  hover:bg-red-800"
                                         onclick="alert('Are you sure to delete this product')">Delete</a>
+                                    <a href="{{ route('user.show', $user->id) }}"
+                                        class="bg-green-600  px-[15px] py-[5px] rounded-md text-white  hover:bg-green-800">View</a>
                                 </td>
                             </tr>
                         @endforeach
