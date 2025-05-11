@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\PermissionController;
+use App\Http\Controllers\RoleController;
 
 /*
 |--------------------------------------------------------------------------
@@ -58,6 +59,15 @@ Route::get('/permission/list', [PermissionController::class, 'list'])->name('per
 Route::get('/permission/edit/{id}', [PermissionController::class, 'edit'])->name('permission.edit');
 Route::post('/permission/update/{id}', [PermissionController::class, 'update'])->name('permission.update');
 Route::get('/permission/delete/{id}', [PermissionController::class, 'delete'])->name('permission.delete');
+
+//Role route
+Route::get('/role/create', [RoleController::class, 'create'])->name('role.create');
+Route::post('/role/create', [RoleController::class, 'store'])->name('role.store');
+Route::get('/role/list', [RoleController::class, 'list'])->name('role.list');
+Route::get('/role/edit/{id}', [RoleController::class, 'edit'])->name('role.edit');
+Route::post('/role/update/{id}', [RoleController::class, 'update'])->name('role.update');
+Route::get('/role/delete/{id}', [RoleController::class, 'delete'])->name('role.delete');
+Route::get('/role/permission/{id}', [RoleController::class, 'addPermissionToRole'])->name('role.permission');
 
 
      // Products route start
