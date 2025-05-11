@@ -48,6 +48,17 @@
                         <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
                     </div>
 
+                      <div class="mt-4">
+                        <x-input-label for="roles" :value="__('Assign Roles')" />
+                        <select name="roles[]" id="roles"
+                            class="block w-full mt-1 border-gray-300 rounded-md shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-200 focus:ring-opacity-50" multiple>
+                            @foreach ($roles as $role)
+                                <option value="{{ $role->name }}" {{ $user->hasRole($role->name)?'selected':'' }}>{{ $role->name }}</option>
+                            @endforeach
+                        </select>
+                        <x-input-error :messages="$errors->get('roles')" class="mt-2" />
+                    </div>
+
                     <div class="mt-4">
                         <x-primary-button class="block w-full">
                             {{ __('Update') }}

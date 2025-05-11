@@ -39,6 +39,7 @@
                             <th class="px-4 py-3">ID</th>
                             <th class="px-4 py-3">Name</th>
                             <th class="px-4 py-3">Email</th>
+                            <th class="px-4 py-3">Roles</th>
                             <th class="px-4 py-3">Action</th>
                         </tr>
                     </thead>
@@ -53,6 +54,16 @@
                                 </td>
                                 <td class="px-4 py-3 text-sm">
                                     {{ $user->email }}
+                                </td>
+                                <td class="px-4 py-3 text-sm">
+                                    @if(!empty($user->getRoleNames()))
+                                    @foreach ($user->getRoleNames() as $rolename)
+                                        <span
+                                            class="bg-blue-200 text-blue-800 text-[16px] font-semibold mr-2 px-2.5 py-0.5 rounded dark:bg-blue-900 dark:text-blue-300">
+                                            {{ $rolename }}
+                                        </span>
+                                    @endforeach
+                                    @endif
                                 </td>
                                 <td class="px-4 py-3">
                                     <a href="{{ route('user.edit', $user->id) }}"
