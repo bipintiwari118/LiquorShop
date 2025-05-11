@@ -4,9 +4,9 @@
     </x-slot>
 
     <div>
-        <form action="{{ route('permission.store') }}" method="POST" enctype="multipart/form-data" class="mb-[80px]">
+        <form action="{{ route('permission.update',$permission->id) }}" method="POST" enctype="multipart/form-data" class="mb-[80px]">
             @csrf
-            <button class="bg-blue-600 text-white px-[20px] py-[10px]  mb-[30px] float-right mr-[50px]">Create</button>
+            <button class="bg-blue-600 text-white px-[20px] py-[10px]  mb-[30px] float-right mr-[50px]">Update</button>
             <div class="h-auto w-full">
 
                 @if ($errors->any())
@@ -29,7 +29,7 @@
                         <div class="w-full flex flex-col gap-y-3">
                             <label for="" class="text-[20px] font-[500]">Name: <span
                                     class="text-red-600">*</span></label>
-                            <input type="text" name="name" id="" class="w-full rounded-md">
+                            <input type="text" name="name" id="" class="w-full rounded-md" value="{{ $permission->name }}">
                             @error('title')
                                 <div class="text-red-500 text-sm mt-1 ml-3">{{ $message }}</div>
                             @enderror

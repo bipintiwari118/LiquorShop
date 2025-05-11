@@ -190,7 +190,7 @@
                         </li>
                         <li
                             class="px-2 py-1 transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200">
-                            <a class="w-full" href="">Permission List</a>
+                            <a class="w-full" href="{{ route('permission.list') }}">Permission List</a>
                         </li>
                     </ul>
                 </template>

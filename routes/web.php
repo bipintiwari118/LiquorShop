@@ -53,6 +53,11 @@ Route::get('/category/delete/{slug}', [CategoryController::class, 'delete'])->na
 
 //Permission route
 Route::get('/permission/create', [PermissionController::class, 'create'])->name('permission.create');
+Route::post('/permission/create', [PermissionController::class, 'store'])->name('permission.store');
+Route::get('/permission/list', [PermissionController::class, 'list'])->name('permission.list');
+Route::get('/permission/edit/{id}', [PermissionController::class, 'edit'])->name('permission.edit');
+Route::post('/permission/update/{id}', [PermissionController::class, 'update'])->name('permission.update');
+Route::get('/permission/delete/{id}', [PermissionController::class, 'delete'])->name('permission.delete');
 
 
      // Products route start
