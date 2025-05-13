@@ -30,7 +30,7 @@ class PermissionController extends Controller
 
     public function list()
     {
-        $permissions = Permission::all();
+        $permissions = Permission::paginate(5);
         return view('admin.roles-permissions.permissions.list', compact('permissions'));
     }
 
@@ -55,7 +55,7 @@ class PermissionController extends Controller
 
         return redirect()->route('permission.list')->with('success', 'Permission updated successfully.');
     }
-      
+
 
     public function delete($id)
     {

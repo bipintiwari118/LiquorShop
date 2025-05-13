@@ -30,7 +30,7 @@
     <header class="header_section">
         <div class="container">
             <nav class="navbar navbar-expand-lg custom_nav-container ">
-                <a class="navbar-brand" href="index.html"><img width="250"
+                <a class="navbar-brand" href="index.html"><img width="200"
                         src="{{ asset('frontend/images/logo.png') }}" alt="#" /></a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse"
                     data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
@@ -43,7 +43,7 @@
                             <a class="nav-link" href="">Home <span
                                     class="sr-only">(current)</span></a>
                         </li>
-                        <li class="nav-item dropdown">
+                        {{-- <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" role="button"
                                 aria-haspopup="true" aria-expanded="true"> <span class="nav-label">Pages <span
                                         class="caret"></span></a>
@@ -51,15 +51,27 @@
                                 <li><a href="about.html">About</a></li>
                                 <li><a href="testimonial.html">Testimonial 1</a></li>
                             </ul>
+                        </li> --}}
+                        <li class="nav-item">
+                            <a class="nav-link" href="">Beer</a>
+                        </li>
+                         <li class="nav-item">
+                            <a class="nav-link" href="">Vodka</a>
+                        </li>
+                         <li class="nav-item">
+                            <a class="nav-link" href="">Rum</a>
+                        </li>
+                         <li class="nav-item">
+                            <a class="nav-link" href="">Soft Drink</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="">Products</a>
+                            <a class="nav-link" href="">Cigarette</a>
+                        </li>
+                          <li class="nav-item">
+                            <a class="nav-link" href="">Snacks</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="blog_list.html">Blog</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="contact.html">Contact</a>
+                            <a class="nav-link" href="{{ route('contact') }}">Contact</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="">
@@ -181,7 +193,7 @@
                                             <li><a href="#">Services</a></li>
                                             <li><a href="#">Testimonial</a></li>
                                             <li><a href="#">Blog</a></li>
-                                            <li><a href="#">Contact</a></li>
+                                            <li><a href="{{ route('contact') }}">Contact</a></li>
                                         </ul>
                                     </div>
                                 </div>

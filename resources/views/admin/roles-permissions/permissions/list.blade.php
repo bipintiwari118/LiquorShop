@@ -21,16 +21,16 @@
                             <thead class="bg-gray-50">
                                 <tr>
                                     <th scope="col"
-                                        class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                        class="px-6 py-3 text-[18px] text-left text-xs font-bold text-gray-500 uppercase tracking-wider">
                                         Id
                                     </th>
                                     <th scope="col"
-                                        class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                        class="px-6 py-3 text-[18px] text-left text-xs font-bold text-gray-500 uppercase tracking-wider">
                                         Name
                                     </th>
 
                                     <th scope="col"
-                                        class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                        class="px-6 py-3 text-[18px] text-left text-xs font-bold text-gray-500 uppercase tracking-wider">
                                         Actions
                                     </th>
                                 </tr>
@@ -63,6 +63,9 @@
                         </table>
                     </div>
                 </div>
+            </div>
+            <div class="mt-4 mb-[100px]">
+                {{ $permissions->links() }}
             </div>
         </div>
     </div>

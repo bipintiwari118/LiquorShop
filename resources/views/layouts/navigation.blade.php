@@ -18,7 +18,7 @@
                     {{ __('Dashboard') }}
                 </x-nav-link>
             </li>
-
+ @role('Super-Admin')
             <li class="relative px-6 py-3">
                 <x-nav-link href="{{ route('users.index') }}" :active="request()->routeIs('users.index')">
                     <x-slot name="icon">
@@ -82,6 +82,10 @@
                     </ul>
                 </template>
             </li>
+
+            @endrole
+
+            @role('Admin')
             <li class="relative px-6 py-3">
                 <button
                     class="inline-flex items-center justify-between w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
@@ -119,6 +123,10 @@
                     </ul>
                 </template>
             </li>
+            @endrole
+
+
+             @role('Sub-Admin')
 
             <li class="relative px-6 py-3">
                 <button
@@ -158,7 +166,8 @@
                     </ul>
                 </template>
             </li>
-
+            @endrole
+    @role('Super-Admin')
             <li class="relative px-6 py-3">
                 <button
                     class="inline-flex items-center justify-between w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
@@ -231,7 +240,7 @@
                     </ul>
                 </template>
             </li>
-
+            @endrole
         </ul>
     </div>
 </aside>
