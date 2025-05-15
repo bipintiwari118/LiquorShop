@@ -402,7 +402,7 @@
                 </h2>
             </div>
             <div class="row">
-                {{-- @foreach ($products as $product) --}}
+                @foreach ($products as $product)
                     <div class="col-sm-6 col-md-4 col-lg-3">
                         <div class="box">
                             <div class="option_container">
@@ -423,22 +423,22 @@
                             </div>
                             <div class="detail-box">
                                 <h5>
-                                    {{-- {{ $product->title }} --}}
+                                    {{ $product->title }}
                                 </h5>
                                 <h6>
-                                    {{-- @if ($product->compare_price)
+                                    @if ($product->compare_price)
                                         <del style="color: red;">${{ $product->price }}</del>
                                         ${{ $product->compare_price }}
                                     @else
                                         ${{ $product->price }}
-                                    @endif --}}
+                                    @endif
                                 </h6>
 
 
                             </div>
                         </div>
                     </div>
-                {{-- @endforeach --}}
+                @endforeach
 
 
 
