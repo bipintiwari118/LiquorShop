@@ -243,7 +243,7 @@
             </div>
 
             <div class="text-center mt-4">
-                <a href="" class="btn btn-primary">
+                <a href="{{ route('rum.show') }}" class="btn btn-primary">
                     View More
                 </a>
             </div>
