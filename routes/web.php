@@ -96,6 +96,17 @@ Route::middleware(['auth','role:Super-Admin|Admin|Sub-Admin'])->group(function (
 require __DIR__.'/auth.php';
 
 
+
+//frontend route
+
+
+
 Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::get('/beer', [HomeController::class, 'beerShow'])->name('beer.show');
+Route::get('/rum', [HomeController::class, 'rumShow'])->name('rum.show');
+Route::get('/vodka', [HomeController::class, 'vodkaShow'])->name('vodka.show');
+Route::get('/soft-drink', [HomeController::class, 'softDrinkShow'])->name('softDrink.show');
+Route::get('/cigrarette', [HomeController::class, 'cigaretteShow'])->name('cigarette.show');
+Route::get('snack', [HomeController::class, 'snackShow'])->name('snack.show');
 
 

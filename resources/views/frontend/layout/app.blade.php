@@ -39,9 +39,8 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav">
-                        <li class="nav-item active">
-                            <a class="nav-link" href="{{ url('/') }}">Home <span
-                                    class="sr-only">(current)</span></a>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ url('/') }}">Home</a>
                         </li>
                         {{-- <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" role="button"
@@ -53,25 +52,25 @@
                             </ul>
                         </li> --}}
                         <li class="nav-item">
-                            <a class="nav-link" href="">Beer</a>
+                            <a class="nav-link" href=" {{ route('beer.show')  }}">Beer</a>
                         </li>
                          <li class="nav-item">
-                            <a class="nav-link" href="">Vodka</a>
+                            <a class="nav-link" href="{{ route('vodka.show') }}">Vodka</a>
                         </li>
                          <li class="nav-item">
-                            <a class="nav-link" href="">Rum</a>
+                            <a class="nav-link" href="{{ route('rum.show') }}">Rum</a>
                         </li>
                          <li class="nav-item">
-                            <a class="nav-link" href="">Soft Drink</a>
+                            <a class="nav-link" href="{{ route('softDrink.show') }}">Soft Drink</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="">Cigarette</a>
+                            <a class="nav-link" href="{{ route('cigarette.show') }}">Cigarette</a>
                         </li>
                           <li class="nav-item">
-                            <a class="nav-link" href="">Snacks</a>
+                            <a class="nav-link" href="{{ route('snack.show') }}">Snacks</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('contact') }}">Contact</a>
+                            <a class="nav-link" href="">Contact</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="">
@@ -193,7 +192,7 @@
                                             <li><a href="#">Services</a></li>
                                             <li><a href="#">Testimonial</a></li>
                                             <li><a href="#">Blog</a></li>
-                                            <li><a href="{{ route('contact') }}">Contact</a></li>
+                                            <li><a href="">Contact</a></li>
                                         </ul>
                                     </div>
                                 </div>
