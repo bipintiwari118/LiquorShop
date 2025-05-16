@@ -65,7 +65,7 @@
                         <div class="w-full flex flex-col gap-y-2">
                             <label for="" class="text-[20px] font-[500]">Volume: <span
                                     class="text-red-600">*</span></label>
-                            <input type="number" name="volume" id="" class="w-full rounded-md"
+                            <input type="text" name="volume" id="" class="w-full rounded-md"
                                 value="{{ $product->volume }}">
                             @error('volume')
                                 <div class="text-red-500 text-sm mt-1 ml-3">{{ $message }}</div>

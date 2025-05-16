@@ -27,7 +27,7 @@
                         <div class="box">
                             <div class="option_container">
                                 <div class="options">
-                                    <a href="" class="option1">
+                                    <a href="{{ route('addToCart',$snack->id) }}" class="option1">
                                         Add to Cart
                                     </a>
                                     <a href="{{ route('product.details',$snack->slug) }}" class="option2">

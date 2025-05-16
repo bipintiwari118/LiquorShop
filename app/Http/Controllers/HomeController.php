@@ -36,16 +36,16 @@ class HomeController extends Controller
     }
 
     public function cigratteShow(){
-        $cigrattes = Product::where('category','Cigratte')->paginate(10);
+        $cigrattes = Product::where('category','Cigarette')->paginate(10);
         return view('frontend.cigratte', compact('cigrattes'));
     }
 
     public function snackShow(){
-        $snacks = Product::where('category','Snack')->paginate(10);
+        $snacks = Product::where('category','Snacks')->paginate(10);
         return view('frontend.snack', compact('snacks'));
     }
     public function softDrinkShow(){
-        $softDrinks = Product::where('category','Soft Drink')->paginate(10);
+        $softDrinks = Product::where('category','SoftDrink')->paginate(10);
         return view('frontend.softDrink', compact('softDrinks'));
     }
 
