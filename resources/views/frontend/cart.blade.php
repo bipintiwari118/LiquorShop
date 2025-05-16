@@ -218,7 +218,7 @@
                             <strong>Total:</strong>
                             <strong id="total-price-final">$ {{ $total }}</strong>
                         </div>
-                        <a href="#" class="btn btn-success w-100">Proceed to Checkout</a>
+                        <a href="{{ route('check.out') }}" class="btn btn-success w-100">Proceed to Checkout</a>
                     </div>
                 </div>
             </div>

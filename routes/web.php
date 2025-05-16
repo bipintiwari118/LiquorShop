@@ -112,11 +112,19 @@ Route::get('snack', [HomeController::class, 'snackShow'])->name('snack.show');
 Route::get('/product/details/{slug}', [HomeController::class, 'productDetails'])->name('product.details');
 
 
+//carts route
+
 Route::get('/cart', [CartController::class, 'index'])->name('cart');
 Route::get('/cart/{id}', [CartController::class, 'addCart'])->name('addToCart');
 Route::get('/cart/remove/{id}',[CartController::class, 'cartRemove'])->name('cart.remove');
 Route::post('/cart/update-ajax/{id}', [CartController::class, 'updateAjax']);
 Route::get('/clear',[CartController::class, 'cartClear'])->name('cart.clear');
+
+
+
+//checkout routes
+
+Route::get('/checkout',[CartController::class, 'checkOut'])->name('check.out');
 
 
 

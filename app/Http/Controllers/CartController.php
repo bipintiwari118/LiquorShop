@@ -84,4 +84,15 @@ public function updateAjax(Request $request, $id)
 
          return back()->with('success','Cart has been  successfully Clear.');
     }
+
+
+
+
+     //checkout functions
+
+     public function checkOut(){
+         $total=\Cart::getTotal();
+        $items = \Cart::getContent();
+        return view('frontend.checkout',compact('items','total'));
+     }
 }
