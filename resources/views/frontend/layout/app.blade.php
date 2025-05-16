@@ -52,21 +52,21 @@
                             </ul>
                         </li> --}}
                         <li class="nav-item">
-                            <a class="nav-link" href=" {{ route('beer.show')  }}">Beer</a>
+                            <a class="nav-link" href=" {{ route('beer.show') }}">Beer</a>
                         </li>
-                         <li class="nav-item">
+                        <li class="nav-item">
                             <a class="nav-link" href="{{ route('vodka.show') }}">Vodka</a>
                         </li>
-                         <li class="nav-item">
+                        <li class="nav-item">
                             <a class="nav-link" href="{{ route('rum.show') }}">Rum</a>
                         </li>
-                         <li class="nav-item">
+                        <li class="nav-item">
                             <a class="nav-link" href="{{ route('softDrink.show') }}">Soft Drink</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('cigarette.show') }}">Cigarette</a>
+                            <a class="nav-link" href="{{ route('cigratte.show') }}">Cigarette</a>
                         </li>
-                          <li class="nav-item">
+                        <li class="nav-item">
                             <a class="nav-link" href="{{ route('snack.show') }}">Snacks</a>
                         </li>
                         <li class="nav-item">
@@ -145,8 +145,8 @@
                                 <a class="btn btn-danger ml-5" href="">Logout</a>
                             </li>
                         @else --}}
-                            <!-- Show Login and Register Buttons if User is Logged Out -->
-                            {{-- <li class="nav-item">
+                        <!-- Show Login and Register Buttons if User is Logged Out -->
+                        {{-- <li class="nav-item">
                                 <a class="btn btn-primary ml-5" href="{{ route('login') }}">Login</a>
                             </li>
                             <li class="nav-item">
@@ -173,9 +173,9 @@
                                     alt="#" /></a>
                         </div>
                         <div class="information_f">
-                            <p><strong>ADDRESS:</strong> 28 White tower, Street Name New York City, USA</p>
-                            <p><strong>TELEPHONE:</strong> +91 987 654 3210</p>
-                            <p><strong>EMAIL:</strong> yourmain@gmail.com</p>
+                            <p><strong>ADDRESS:</strong> New Bus Park, Kathmandu</p>
+                            <p><strong>TELEPHONE:</strong> +977 9813834870</p>
+                            <p><strong>EMAIL:</strong> Bipintiwari118@gmail.com</p>
                         </div>
                     </div>
                 </div>
@@ -187,25 +187,22 @@
                                     <div class="widget_menu">
                                         <h3>Menu</h3>
                                         <ul>
-                                            <li><a href="#">Home</a></li>
-                                            <li><a href="#">About</a></li>
-                                            <li><a href="#">Services</a></li>
-                                            <li><a href="#">Testimonial</a></li>
-                                            <li><a href="#">Blog</a></li>
+                                            <li><a href="{{ route('home') }}">Home</a></li>
+                                            <li><a href="">Blog</a></li>
                                             <li><a href="">Contact</a></li>
                                         </ul>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="widget_menu">
-                                        <h3>Account</h3>
+                                        <h3>Products</h3>
                                         <ul>
-                                            <li><a href="#">Account</a></li>
-                                            <li><a href="#">Checkout</a></li>
-                                            <li><a href="#">Login</a></li>
-                                            <li><a href="#">Register</a></li>
-                                            <li><a href="#">Shopping</a></li>
-                                            <li><a href="#">Widget</a></li>
+                                            <li><a href="{{ route('beer.show') }}">Beers</a></li>
+                                            <li><a href="{{ route('rum.show') }}">Rums</a></li>
+                                            <li><a href="{{ route('vodka.show') }}">Vodkas</a></li>
+                                            <li><a href="{{ route('snack.show') }}">Snacks</a></li>
+                                            <li><a href="{{ route('cigratte.show') }}">Cigrattes</a></li>
+                                            <li><a href="{{ route('softDrink.show') }}">Soft Drinks</a></li>
                                         </ul>
                                     </div>
                                 </div>
@@ -213,20 +210,30 @@
                         </div>
                         <div class="col-md-5">
                             <div class="widget_menu">
-                                <h3>Newsletter</h3>
-                                <div class="information_f">
-                                    <p>Subscribe by our newsletter and get update protidin.</p>
-                                </div>
-                                <div class="form_sub">
-                                    <form>
-                                        <fieldset>
-                                            <div class="field">
-                                                <input type="email" placeholder="Enter Your Mail" name="email" />
-                                                <input type="submit" value="Subscribe" />
-                                            </div>
-                                        </fieldset>
-                                    </form>
-                                </div>
+                                <h3>Contact Us</h3>
+                                <ul>
+                                    <li><a href="#">Contact</a></li>
+                                    <li>
+                                        <a href="https://facebook.com/" target="_blank">
+                                            Facebook
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="https://instagram.com/" target="_blank">
+                                            Instagram
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="https://youtube.com/" target="_blank">
+                                            YouTube
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="https://tiktok.com/" target="_blank">
+                                            TikTok
+                                        </a>
+                                    </li>
+                                </ul>
                             </div>
                         </div>
                     </div>
@@ -236,9 +243,9 @@
     </footer>
     <!-- footer end -->
     <div class="cpy_">
-        <p class="mx-auto">© 2021 All Rights Reserved By <a href="https://html.design/">Free Html Templates</a><br>
+        <p class="mx-auto">© 2025 All Rights Reserved By <a href="https://bipintiwari.com.np/">Liquor Shop</a><br>
 
-            Distributed By <a href="https://themewagon.com/" target="_blank">ThemeWagon</a>
+            Distributed By <a href="https://bipintiwari.com.np/" target="_blank">Bipin Tiwari</a>
 
         </p>
     </div>

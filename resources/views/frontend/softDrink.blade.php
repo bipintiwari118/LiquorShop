@@ -22,7 +22,7 @@
                 </h2>
             </div>
             <div class="row">
-                @foreach ($softDrniks as $softDrink)
+                @foreach ($softDrinks as $softDrink)
                     <div class="col-sm-6 col-md-4 col-lg-4">
                         <div class="box">
                             <div class="option_container">
@@ -30,7 +30,7 @@
                                     <a href="" class="option1">
                                         Add to Cart
                                     </a>
-                                    <a href="" class="option2">
+                                    <a href="{{ route('product.details',$softDrink->slug) }}" class="option2">
                                         Product Details
                                     </a>
                                 </div>

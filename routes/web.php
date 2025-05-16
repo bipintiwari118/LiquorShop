@@ -8,6 +8,7 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\PermissionController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\CartController;
 
 /*
 |--------------------------------------------------------------------------
@@ -106,7 +107,16 @@ Route::get('/beer', [HomeController::class, 'beerShow'])->name('beer.show');
 Route::get('/rum', [HomeController::class, 'rumShow'])->name('rum.show');
 Route::get('/vodka', [HomeController::class, 'vodkaShow'])->name('vodka.show');
 Route::get('/soft-drink', [HomeController::class, 'softDrinkShow'])->name('softDrink.show');
-Route::get('/cigrarette', [HomeController::class, 'cigaretteShow'])->name('cigarette.show');
+Route::get('/cigratte', [HomeController::class, 'cigratteShow'])->name('cigratte.show');
 Route::get('snack', [HomeController::class, 'snackShow'])->name('snack.show');
+Route::get('/product/details/{slug}', [HomeController::class, 'productDetails'])->name('product.details');
+
+
+Route::get('/cart', [CartController::class, 'index'])->name('cart');
+Route::get('/cart/{id}', [CartController::class, 'addCart'])->name('addToCart');
+Route::get('/cart/remove/{id}',[CartController::class, 'cartRemove'])->name('cart.remove');
+Route::post('/cart/update-ajax/{id}', [CartController::class, 'updateAjax']);
+Route::get('/clear',[CartController::class, 'cartClear'])->name('cart.clear');
+
 
 

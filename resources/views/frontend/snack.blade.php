@@ -30,7 +30,7 @@
                                     <a href="" class="option1">
                                         Add to Cart
                                     </a>
-                                    <a href="" class="option2">
+                                    <a href="{{ route('product.details',$snack->slug) }}" class="option2">
                                         Product Details
                                     </a>
                                 </div>

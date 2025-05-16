@@ -122,10 +122,10 @@
                         <div class="box">
                             <div class="option_container">
                                 <div class="options">
-                                    <a href="" class="option1">
+                                    <a href="{{ route('addToCart',$beer->id) }}" class="option1">
                                         Add to Cart
                                     </a>
-                                    <a href="" class="option2">
+                                    <a href="{{ route('product.details',$beer->slug) }}" class="option2">
                                         Product Details
                                     </a>
                                 </div>
@@ -213,7 +213,7 @@
                                     <a href="" class="option1">
                                         Add to Cart
                                     </a>
-                                    <a href="" class="option2">
+                                    <a href="{{ route('product.details',$rum->slug) }}" class="option2">
                                         Product Details
                                     </a>
                                 </div>
@@ -529,7 +529,7 @@
                                     <a href="" class="option1">
                                         Add to Cart
                                     </a>
-                                    <a href="" class="option2">
+                                    <a href="{{ route('product.details',$vodka->slug) }}" class="option2">
                                         Product Details
                                     </a>
                                 </div>
@@ -559,7 +559,7 @@
             </div>
 
             <div class="text-center mt-4">
-                <a href="" class="btn btn-primary">
+                <a href="{{ route('vodka.show')}}" class="btn btn-primary">
                     View More
                 </a>
             </div>

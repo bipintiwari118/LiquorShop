@@ -52,4 +52,12 @@ class HomeController extends Controller
 
 
 
+    public function productDetails($slug){
+        $product = Product::where('slug', $slug)->first();
+        return view('frontend.product_details', compact('product'));
+    }
+
+
+
+
 }

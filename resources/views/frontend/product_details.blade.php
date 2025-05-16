@@ -29,6 +29,29 @@
             background-color: #007bff;
             border-color: #007bff;
         }
+
+        .product-price .badge-success {
+            background-color: #28a745;
+            color: #fff;
+            padding: 0.5em 1em;
+            border-radius: 20px;
+        }
+
+        .product-title {
+            font-size: 2.7rem;
+            font-weight: 800;
+            letter-spacing: 1px;
+            margin-bottom: 1rem;
+            color: #1a237e;
+            /* Deep blue */
+            text-align: left;
+            line-height: 1.1;
+            background: none;
+            border: none;
+            text-shadow: 0 2px 8px rgba(30, 136, 229, 0.10);
+            display: block;
+            padding-bottom: 0;
+        }
     </style>
 @endsection
 @section('content')
@@ -37,41 +60,37 @@
             <div class="row">
                 <!-- Product Image -->
                 <div class="col-md-6">
-                    <div class="product-image">
-                        <img src="{{ asset('/' . $product->image) }}" alt="{{ $product->title }}"
-                            class="img-fluid rounded shadow">
+                    <div class="product-image d-flex align-items-center justify-content-center"
+                        style="width:320px; height:320px; background:#f8f9fa; border-radius:16px; overflow:hidden;">
+                        <img src="{{ asset($product->featured_image) }}" alt="{{ $product->title }}" class="img-fluid"
+                            style="max-width:100%; max-height:100%; object-fit:contain; display:block; margin:auto;">
                     </div>
                 </div>
 
                 <!-- Product Details -->
                 <div class="col-md-6">
                     <div class="product-details">
-                        @if(Session::has('success'))
-                        <div class="alert alert-success" role="alert">
-                            {{ Session::get('success') }}
-                        </div>
+                        @if (Session::has('success'))
+                            <div class="alert alert-success" role="alert">
+                                {{ Session::get('success') }}
+                            </div>
                         @endif
-                        <h1 class="product-title mb-3">{{ $product->title }}</h1>
-                        <div class="product-description text-muted mb-4">
-                            {!! $product->description !!}
+                        <h1 class="product-title mb-3">{{ $product->title }}
+                        </h1>
+                        <ul class="list-unstyled mb-4">
+                            <li><strong>Brand:</strong> {{ $product->brand ?? 'N/A' }}</li>
+                            <li><strong>Volume:</strong> {{ $product->volume ?? 'N/A' }}</li>
+                            <li><strong>Alcohol Percentage:</strong> {{ $product->alcohol ?? 'N/A' }}</li>
+                            <li><strong>Category:</strong> {{ $product->category ?? 'N/A' }}</li>
+                        </ul>
+                        <div class="product-price mb-4 d-flex align-items-center" style="gap: 15px;">
+                            <span class="h3 text-success" style="font-weight: bold;">
+                                ${{ number_format($product->price, 2) }}
+                            </span>
+
                         </div>
-                        <div class="product-price mb-4">
-                            @if ($product->compare_price)
-                                <span class="text-danger h4">
-                                    <del>${{ $product->price }}</del>
-                                </span>
-                                <span class="text-success h3">${{ $product->compare_price }}</span>
-                            @else
-                                <span class="text-success h3">${{ $product->price }}</span>
-                            @endif
-                        </div>
-                        <form action="{{ route('add.cart', $product->slug) }}" method="get">
-                            @csrf
-                            <label for="" style="font-weight: 600;">Quantity:</label>
-                            <input placeholder="Enter quantity" type="number" name="quantity" value="1"
-                                min="1" max="20" class="form-control mb-2" style="width:35%;">
-                          <input type="submit" value="Add To Cart" style="float: left;">
-                        </form>
+
+                            <a href="" type="submit" class="btn btn-primary" style="margin-left: 10px;">Add To Cart</a>
                     </div>
                 </div>
             </div>
@@ -95,7 +114,7 @@
                         <div class="tab-pane fade show active" id="additional-info" role="tabpanel"
                             aria-labelledby="additional-info-tab">
                             <p class="text-muted">
-                                {!! $product->description  ?? 'No additional information available for this product.'!!}
+                                {!! $product->description ?? 'No additional information available for this product.' !!}
                             </p>
                         </div>
                         <!-- Reviews Tab -->
@@ -108,3 +127,19 @@
         </div>
     </section>
 @endsection
+
+
+@push('scripts')
+<script>
+    function changeQty(amount) {
+        var qtyInput = document.getElementById('quantity');
+        var current = parseInt(qtyInput.value) || 1;
+        var min = parseInt(qtyInput.min) || 1;
+        var max = parseInt(qtyInput.max) || 20;
+        var next = current + amount;
+        if (next >= min && next <= max) {
+            qtyInput.value = next;
+        }
+    }
+</script>
+@endpush
