@@ -75,6 +75,10 @@
             color: rgb(27, 146, 27);
         }
 
+         .carterror {
+            color: red;
+        }
+
         /* Responsive Adjustments */
         @media (max-width: 768px) {
             .table-responsive {
@@ -148,6 +152,11 @@
                         @if (Session::has('success'))
                             <div class="text-[20px] mt-1 p-[20px] cartsuccess" role="alert">
                                 {{ Session::get('success') }}
+                            </div>
+                        @endif
+                        @if (Session::has('error'))
+                            <div class="text-[20px] mt-1 p-[20px] carterror" role="alert">
+                                {{ Session::get('error') }}
                             </div>
                         @endif
                         <a href="{{ route('cart.clear') }}" class="btn btn-danger btn-sm mt-2 mt-md-0"

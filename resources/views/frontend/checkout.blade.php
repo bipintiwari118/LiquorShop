@@ -90,110 +90,115 @@
 
 @section('content')
     <div class="container py-4">
-        <div class="row">
-            <!-- Customer Details -->
-            <div class="col-lg-7">
-                <div class="checkout-section mb-4">
-                    <h3 class="mb-4 font-weight-bold text-primary">Customer Details</h3>
-                    <form>
+        <form>
+            <div class="row">
+                <!-- Customer Details -->
+                <div class="col-lg-7">
+                    <div class="checkout-section mb-4">
+                        <h3 class="mb-4 font-weight-bold text-primary">Customer Details</h3>
+
                         <div class="row">
                             <div class="col-md-6 mb-3">
                                 <label class="form-label">Full Name <span class="text-danger">*</span></label>
-                                <input type="text" class="form-control" required placeholder="Your Name">
+                                <input type="text" name="name" class="form-control" required placeholder="Your Name">
                             </div>
                             <div class="col-md-6 mb-3">
                                 <label class="form-label">Email <span class="text-danger">*</span></label>
-                                <input type="email" class="form-control" required placeholder="you@email.com">
+                                <input type="email" name="email" class="form-control" required
+                                    placeholder="you@email.com">
                             </div>
                             <div class="col-md-6 mb-3">
                                 <label class="form-label">Phone <span class="text-danger">*</span></label>
-                                <input type="text" class="form-control" required placeholder="Phone Number">
+                                <input type="text" name="phone" class="form-control" required
+                                    placeholder="Phone Number">
                             </div>
                             <div class="col-md-6 mb-3">
                                 <label class="form-label">City <span class="text-danger">*</span></label>
-                                <input type="text" class="form-control" required placeholder="City">
+                                <input type="text" name="city" class="form-control" required placeholder="City">
                             </div>
                             <div class="col-12 mb-3">
                                 <label class="form-label">Address <span class="text-danger">*</span></label>
-                                <textarea class="form-control" rows="2" required placeholder="Full Address"></textarea>
+                                <textarea class="form-control" name="address" rows="2" required placeholder="Full Address"></textarea>
                             </div>
+                            <input type="hidden" value="{{ $total }}">
                         </div>
-                    </form>
-                </div>
-            </div>
-            <!-- Right Side: Order Summary, Payment, Button -->
-            <div class="col-lg-5">
-                <div class="checkout-section mb-4">
-                    <!-- Order Summary (above) -->
-                    <div class="order-summary-table mb-4">
-                        <h5 class="mb-3 font-weight-bold text-secondary">Order Summary</h5>
-                        <div class="table-responsive">
-                            <table class="table table-borderless table-striped mb-0 rounded shadow-sm">
-                                <thead>
-                                    <tr>
-                                        <th class="text-left">Product</th>
-                                        <th class="text-center">Qty</th>
-                                        <th class="text-right total-col">Total</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    @foreach ($items as $item)
-                                        <tr>
-                                            <td class="text-left">
-                                                <div class="d-flex align-items-center">
-                                                    <img src="{{ asset($item->associatedModel->featured_image) }}"
-                                                        alt="Product"
-                                                        style="width:36px; height:36px; object-fit:cover; border-radius:6px; margin-right:8px;">
-                                                    <span>{{ $item->name }}</span>
-                                                </div>
-                                            </td>
-                                            <td class="text-center">{{ $item->quantity }}</td>
-                                            <td class="text-right">$ {{ $item->quantity * $item->price }}</td>
-                                        </tr>
-                                    @endforeach
 
-                                </tbody>
-                                <tfoot>
-                                    <tr class="border-top">
-                                        <th colspan="2" class="text-right">Subtotal:</th>
-                                        <th class="text-right">${{ $total }}</th>
-                                    </tr>
-                                    <tr>
-                                        <th colspan="2" class="text-right">Shipping:</th>
-                                        <th class="text-right">Free</th>
-                                    </tr>
-                                    <tr>
-                                        <th colspan="2" class="text-right h5">Total:</th>
-                                        <th class="text-right h5 text-success">${{ $total }}</th>
-                                    </tr>
-                                </tfoot>
-                            </table>
-                        </div>
                     </div>
-                    <!-- Payment Method (below order summary) -->
-                    <div class="mb-4">
-                        <h5 class="mb-3 font-weight-bold text-primary">Payment Method</h5>
-                        <div class="payment-methods d-flex flex-column gap-2">
-                            <div class="form-check mb-2">
-                                <input class="form-check-input" type="radio" name="payment_method" id="online"
-                                    value="online" checked>
-                                <label class="form-check-label" for="online">
-                                    <i class="fa fa-credit-card text-primary"></i> Online Payment
-                                </label>
-                            </div>
-                            <div class="form-check">
-                                <input class="form-check-input" type="radio" name="payment_method" id="cod"
-                                    value="cod">
-                                <label class="form-check-label" for="cod">
-                                    <i class="fa fa-money-bill text-success"></i> Cash on Delivery
-                                </label>
+                </div>
+                <!-- Right Side: Order Summary, Payment, Button -->
+                <div class="col-lg-5">
+                    <div class="checkout-section mb-4">
+                        <!-- Order Summary (above) -->
+                        <div class="order-summary-table mb-4">
+                            <h5 class="mb-3 font-weight-bold text-secondary">Order Summary</h5>
+                            <div class="table-responsive">
+                                <table class="table table-borderless table-striped mb-0 rounded shadow-sm">
+                                    <thead>
+                                        <tr>
+                                            <th class="text-left">Product</th>
+                                            <th class="text-center">Qty</th>
+                                            <th class="text-right total-col">Total</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach ($items as $item)
+                                            <tr>
+                                                <td class="text-left">
+                                                    <div class="d-flex align-items-center">
+                                                        <img src="{{ asset($item->associatedModel->featured_image) }}"
+                                                            alt="Product"
+                                                            style="width:36px; height:36px; object-fit:cover; border-radius:6px; margin-right:8px;">
+                                                        <span>{{ $item->name }}</span>
+                                                    </div>
+                                                </td>
+                                                <td class="text-center">{{ $item->quantity }}</td>
+                                                <td class="text-right">$ {{ $item->quantity * $item->price }}</td>
+                                            </tr>
+                                        @endforeach
+
+                                    </tbody>
+                                    <tfoot>
+                                        <tr class="border-top">
+                                            <th colspan="2" class="text-right">Subtotal:</th>
+                                            <th class="text-right">${{ $total }}</th>
+                                        </tr>
+                                        <tr>
+                                            <th colspan="2" class="text-right">Shipping:</th>
+                                            <th class="text-right">Free</th>
+                                        </tr>
+                                        <tr>
+                                            <th colspan="2" class="text-right h5">Total:</th>
+                                            <th class="text-right h5 text-success">${{ $total }}</th>
+                                        </tr>
+                                    </tfoot>
+                                </table>
                             </div>
                         </div>
+                        <!-- Payment Method (below order summary) -->
+                        <div class="mb-4">
+                            <h5 class="mb-3 font-weight-bold text-primary">Payment Method</h5>
+                            <div class="payment-methods d-flex flex-column gap-2">
+                                <div class="form-check mb-2">
+                                    <input class="form-check-input" type="radio" name="payment_method" id="online"
+                                        value="online" checked>
+                                    <label class="form-check-label" for="online">
+                                        <i class="fa fa-credit-card text-primary"></i> Online Payment
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="payment_method" id="cod"
+                                        value="cod">
+                                    <label class="form-check-label" for="cod">
+                                        <i class="fa fa-money-bill text-success"></i> Cash on Delivery
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Proceed to Payment Button (bottom) -->
+                        <a href="#" class="btn btn-success w-100 btn-lg">Proceed to Payment</a>
                     </div>
-                    <!-- Proceed to Payment Button (bottom) -->
-                    <a href="#" class="btn btn-success w-100 btn-lg">Proceed to Payment</a>
                 </div>
             </div>
-        </div>
+        </form>
     </div>
 @endsection
