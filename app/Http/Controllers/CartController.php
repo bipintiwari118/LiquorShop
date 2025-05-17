@@ -92,16 +92,5 @@ public function updateAjax(Request $request, $id)
 
 
 
-     //checkout functions
-
-     public function checkOut(){
-         $items = \Cart::getContent();
-         $total=\Cart::getTotal();
-
-        if(empty($items)){
-            return back()->with('error','Does not have any product added.');
-        }
-
-        return view('frontend.checkout',compact('items','total'));
-     }
+   
 }

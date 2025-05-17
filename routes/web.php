@@ -9,6 +9,8 @@ use App\Http\Controllers\PermissionController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\OrderController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -124,7 +126,8 @@ Route::get('/clear',[CartController::class, 'cartClear'])->name('cart.clear');
 
 //checkout routes
 
-Route::get('/checkout',[CartController::class, 'checkOut'])->name('check.out');
+Route::get('/checkout',[OrderController::class, 'create'])->name('check.out');
+Route::post('/checkout',[OrderController::class,'store'])->name('checkout.store');
 
 
 

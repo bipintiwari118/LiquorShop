@@ -13,6 +13,14 @@ return new class extends Migration
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
+            $table->string('email');
+            $table->string('phone');
+            $table->string('city');
+            $table->string('address');
+            $table->enum('payment_method', ['cod', 'stripe']);
+            $table->enum('status', ['pending', 'paid'])->default('pending');
+            $table->decimal('total', 10, 2);
             $table->timestamps();
         });
     }
