@@ -92,6 +92,15 @@
     <div class="container py-4">
         <form method="post" action="{{ route('checkout.store') }}">
             @csrf
+            @if ($errors->any())
+                <div class="alert alert-danger">
+                    <ul class="mb-0">
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
             <div class="row">
                 <!-- Customer Details -->
                 <div class="col-lg-7">
@@ -101,27 +110,29 @@
                         <div class="row">
                             <div class="col-md-6 mb-3">
                                 <label class="form-label">Full Name <span class="text-danger">*</span></label>
-                                <input type="text" name="name" class="form-control"  placeholder="Your Name">
+                                <input type="text" name="name" class="form-control" placeholder="Your Name">
+
                             </div>
                             <div class="col-md-6 mb-3">
                                 <label class="form-label">Email <span class="text-danger">*</span></label>
-                                <input type="email" name="email" class="form-control" 
-                                    placeholder="you@email.com">
+                                <input type="email" name="email" class="form-control" placeholder="you@email.com">
+
                             </div>
                             <div class="col-md-6 mb-3">
                                 <label class="form-label">Phone <span class="text-danger">*</span></label>
-                                <input type="text" name="phone" class="form-control" 
-                                    placeholder="Phone Number">
+                                <input type="text" name="phone" class="form-control" placeholder="Phone Number">
+
                             </div>
                             <div class="col-md-6 mb-3">
                                 <label class="form-label">City <span class="text-danger">*</span></label>
-                                <input type="text" name="city" class="form-control"  placeholder="City">
+                                <input type="text" name="city" class="form-control" placeholder="City">
+
                             </div>
                             <div class="col-12 mb-3">
                                 <label class="form-label">Address <span class="text-danger">*</span></label>
-                                <textarea class="form-control" name="address" rows="2"  placeholder="Full Address"></textarea>
+                                <textarea class="form-control" name="address" rows="2" placeholder="Full Address"></textarea>
+
                             </div>
-                            <input type="hidden" value="{{ $total }}">
                         </div>
 
                     </div>
@@ -196,7 +207,7 @@
                             </div>
                         </div>
                         <!-- Proceed to Payment Button (bottom) -->
-                        <button href="#" type="submit" class="btn btn-success w-100 btn-lg">Proceed to Payment</button>
+                        <button type="submit" class="btn btn-success w-100 btn-lg">Proceed to Payment</button>
                     </div>
                 </div>
             </div>

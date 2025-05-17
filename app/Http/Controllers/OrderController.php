@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Order;
+use App\Models\OrderItem;
 
 class OrderController extends Controller
 {
@@ -21,7 +23,8 @@ class OrderController extends Controller
      }
 
      public function store(Request $request){
-        dd($request);
+
+
          $request->validate([
             'name' => 'required',
             'email' => 'required|email',
@@ -37,6 +40,9 @@ class OrderController extends Controller
             'email' => $request->email,
             'phone' => $request->phone,
             'address' => $request->address,
+            'city'=>$request->city,
+            'payment_method' => $request->payment_method,
+            'status' => $request->payment_method === 'cod' ? 'pending' : 'paid',
             'total' => \Cart::getTotal(),
         ]);
 
@@ -50,7 +56,8 @@ class OrderController extends Controller
         }
 
         \Cart::clear();
-        return redirect('/cart')->with('success', 'Order placed successfully!');
+
+        return redirect()->route('cart')->with('success', 'Order placed successfully!');
     }
 
 }
