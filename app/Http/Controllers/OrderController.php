@@ -144,11 +144,11 @@ public function orderUpdate(Request $request,$id){
 
 public function completedOrders()
 {
-    $Orders = Order::where('delivery', 'delivered')
+    $orders = Order::where('delivery', 'delivered')
         ->where('status', 'paid')
         ->paginate(5);
 
-    return view('admin.order.completeOrder', compact('Orders'));
+    return view('admin.order.completeOrder', compact('orders'));
 }
 
 
