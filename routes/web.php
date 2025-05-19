@@ -97,6 +97,7 @@ Route::middleware(['auth','role:Super-Admin|Admin|Sub-Admin'])->group(function (
       Route::get('/order/list', [OrderController::class, 'orderList'])->name('order.list');
       Route::get('/orders/edit/{id}', [OrderController::class, 'orderEdit'])->name('order.edit');
       Route::post('/orders/edit/{id}', [OrderController::class,'orderUpdate'])->name('order.update');
+      Route::get('/complete/order/list', [OrderController::class, 'completedOrders'])->name('complete.order.list');
 
 
 
