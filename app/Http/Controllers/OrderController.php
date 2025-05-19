@@ -11,15 +11,43 @@ class OrderController extends Controller
 {
       //checkout functions
 
+
+
      public function create(){
+
          $items = \Cart::getContent();
+
+        if ($items->isEmpty()) {
+        return back()->with('error', 'Does not have any product added.');
+            }
+
+
          $total=\Cart::getTotal();
 
-        if(empty($items)){
-            return back()->with('error','Does not have any product added.');
-        }
+
 
         return view('frontend.checkout',compact('items','total'));
+     }
+
+
+      public function createQr(Request $request){
+
+         $request->validate([
+            'name' => 'required',
+            'email' => 'required|email',
+            'phone' => 'required',
+            'address' => 'required',
+        ]);
+
+         $total=\Cart::getTotal();
+         $name=$request->name;
+         $email=$request->email;
+         $phone=$request->phone;
+         $address=$request->address;
+
+
+
+        return view('frontend.checkoutQr',compact('total','name','email','phone','address'));
      }
 
      public function store(Request $request){
@@ -30,7 +58,6 @@ class OrderController extends Controller
             'email' => 'required|email',
             'phone' => 'required',
             'address' => 'required',
-            'city'=>'required',
         ]);
 
 
@@ -40,9 +67,6 @@ class OrderController extends Controller
             'email' => $request->email,
             'phone' => $request->phone,
             'address' => $request->address,
-            'city'=>$request->city,
-            'payment_method' => $request->payment_method,
-            'status' => $request->payment_method === 'cod' ? 'pending' : 'paid',
             'total' => \Cart::getTotal(),
         ]);
 
@@ -59,5 +83,64 @@ class OrderController extends Controller
 
         return redirect()->route('cart')->with('success', 'Order placed successfully!');
     }
+
+
+
+
+
+    //for backend
+
+
+public function orderList()
+{
+    // Orders that are NOT both delivered and paid
+    $orders = Order::where(function($q) {
+        $q->where('delivery', '!=', 'delivered')
+          ->orWhere('status', '!=', 'paid');
+    })->paginate(5);
+
+
+    return view('admin.order.list', compact('orders'));
+}
+
+
+public function orderEdit($id){
+    $order=Order::findOrFail($id);
+
+    return view('admin.order.edit',compact('order'));
+}
+
+
+public function orderUpdate(Request $request,$id){
+
+      $order = Order::findOrFail($id);
+
+       $request->validate([
+            'name' => 'required',
+            'email' => 'required|email',
+            'phone' => 'required',
+            'address' => 'required',
+            'delivery' => 'required',
+            'status' => 'required',
+            'total'=>'required',
+        ]);
+
+
+
+            $order->update([
+                'name' => $request->name,
+                'email' => $request->email,
+                'phone' => $request->phone,
+                'address' => $request->address,
+                'total' => $request->total,
+                'delivery'=>$request->delivery,
+                'status'=>$request->status,
+
+            ]);
+
+             return redirect()->route('order.list')->with('success', 'Order updated successfully!');
+
+}
+
 
 }

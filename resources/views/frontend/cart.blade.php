@@ -75,7 +75,7 @@
             color: rgb(27, 146, 27);
         }
 
-         .carterror {
+        .carterror {
             color: red;
         }
 
@@ -227,18 +227,84 @@
                             <strong>Total:</strong>
                             <strong id="total-price-final">$ {{ $total }}</strong>
                         </div>
-                        <a href="{{ route('check.out') }}" class="btn btn-success w-100">Proceed to Checkout</a>
+                        <a href="{{ route('check.out') }}" class="btn btn-success w-100">
+                            Proceed to Checkout
+                        </a>
+
                     </div>
                 </div>
             </div>
         </div>
+
+        <!-- Checkout Modal (Bootstrap 4) -->
+        {{-- <div class="modal fade" id="checkoutModal" tabindex="-1" role="dialog" aria-labelledby="checkoutModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="checkoutModalLabel">Confirm Your Details</h5>
+
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <form method="post" action="{{ route('checkout.store') }}">
+                        @csrf
+                        <div class="modal-body">
+                            <div class="text-center mb-3">
+                                <img src="{{ $items->first()->associatedModel->featured_image ?? '' }}" alt="Product"
+                                    class="img-fluid" style="max-width:80px;">
+                                <small class="form-text text-muted d-block mb-2">
+                                    Please scan this QR and send here
+                                </small>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Total</label>
+                                <input type="text" class="form-control" value="{{ $total }}" id="modal-total"
+                                    disabled>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Type Total</label>
+                                <input type="number" class="form-control" value="" id="type-total" name="type_total"
+                                    autocomplete="off">
+                                <small id="total-match-msg" class="form-text text-danger d-none">Amount does not
+                                    match!</small>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Name</label>
+                                <input type="text" class="form-control" value="" name="name">
+                            </div>
+                             <div class="mb-3">
+                                <label class="form-label">Email</label>
+                                <input type="email" class="form-control" value="" name="email">
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Phone</label>
+                                <small class="form-text text-muted d-block mb-2">
+                                    Use your e-sewa phone number which you pay from
+                                </small>
+                                <input type="text" class="form-control" value="" name="phone">
+
+                            </div>
+
+                            <div class="mb-3">
+                                <label class="form-label">Full Address</label>
+                                <textarea class="form-control" name="address" rows="2"></textarea>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="submit" id="submit-order-btn" class="btn btn-success btn-block w-100">Submit
+                                Order</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div> --}}
     </section>
 @endsection
 
 @push('scripts')
     <script>
-
-
         $('.btn-qty').click(function() {
             var id = $(this).data('id');
             var action = $(this).data('action');
@@ -257,6 +323,26 @@
                     if (response.total) {
                         $('#total-price').text('$' + response.total);
                         $('#total-price-final').text('$' + response.total);
+                    }
+                }
+            });
+        });
+
+
+
+        $(function() {
+            var realTotal = parseFloat({{ $total }});
+            $('#type-total').on('input', function() {
+                var typed = parseFloat($(this).val());
+                if (typed === realTotal) {
+                    $('#submit-order-btn').prop('disabled', false);
+                    $('#total-match-msg').addClass('d-none');
+                } else {
+                    $('#submit-order-btn').prop('disabled', true);
+                    if ($(this).val() !== '') {
+                        $('#total-match-msg').removeClass('d-none');
+                    } else {
+                        $('#total-match-msg').addClass('d-none');
                     }
                 }
             });

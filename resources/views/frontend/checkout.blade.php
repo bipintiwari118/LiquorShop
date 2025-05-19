@@ -85,12 +85,21 @@
                 padding: 0.25rem;
             }
         }
+
+        .carterror {
+            color: red;
+        }
+
+        input[type="email"],
+        input[name="email"] {
+            text-transform: none !important;
+        }
     </style>
 @endsection
 
 @section('content')
     <div class="container py-4">
-        <form method="post" action="{{ route('checkout.store') }}">
+        <form method="get" action="{{ route('check.out.qr') }}">
             @csrf
             @if ($errors->any())
                 <div class="alert alert-danger">
@@ -99,6 +108,11 @@
                             <li>{{ $error }}</li>
                         @endforeach
                     </ul>
+                </div>
+            @endif
+            @if (Session::has('error'))
+                <div class="text-[20px] mt-1 p-[20px] carterror" role="alert" style="margin-left:20px;">
+                    {{ Session::get('error') }}
                 </div>
             @endif
             <div class="row">
@@ -110,27 +124,28 @@
                         <div class="row">
                             <div class="col-md-6 mb-3">
                                 <label class="form-label">Full Name <span class="text-danger">*</span></label>
-                                <input type="text" name="name" class="form-control" placeholder="Your Name">
+                                <input type="text" name="name" class="form-control" placeholder="Your Name"
+                                    style="text-transform:none;">
 
                             </div>
                             <div class="col-md-6 mb-3">
-                                <label class="form-label">Email <span class="text-danger">*</span></label>
-                                <input type="email" name="email" class="form-control" placeholder="you@email.com">
+                                <label class="form-label">Email<span class="text-danger">*</span></label>
+                                <input type="email" name="email" class="form-control" placeholder="you@email.com"
+                                    style="text-transform:none !important;">
 
                             </div>
+
                             <div class="col-md-6 mb-3">
                                 <label class="form-label">Phone <span class="text-danger">*</span></label>
-                                <input type="text" name="phone" class="form-control" placeholder="Phone Number">
+                                <input type="text" name="phone" class="form-control"
+                                    placeholder="Please Use smae phone number which is use in e sewa."
+                                    style="text-transform:none;">
 
                             </div>
-                            <div class="col-md-6 mb-3">
-                                <label class="form-label">City <span class="text-danger">*</span></label>
-                                <input type="text" name="city" class="form-control" placeholder="City">
 
-                            </div>
                             <div class="col-12 mb-3">
                                 <label class="form-label">Address <span class="text-danger">*</span></label>
-                                <textarea class="form-control" name="address" rows="2" placeholder="Full Address"></textarea>
+                                <textarea class="form-control" name="address" rows="2" placeholder="Full Address" style="text-transform:none;"></textarea>
 
                             </div>
                         </div>
@@ -187,7 +202,7 @@
                             </div>
                         </div>
                         <!-- Payment Method (below order summary) -->
-                        <div class="mb-4">
+                        {{-- <div class="mb-4">
                             <h5 class="mb-3 font-weight-bold text-primary">Payment Method</h5>
                             <div class="payment-methods d-flex flex-column gap-2">
                                 <div class="form-check mb-2">
@@ -205,7 +220,7 @@
                                     </label>
                                 </div>
                             </div>
-                        </div>
+                        </div> --}}
                         <!-- Proceed to Payment Button (bottom) -->
                         <button type="submit" class="btn btn-success w-100 btn-lg">Proceed to Payment</button>
                     </div>

@@ -10,6 +10,7 @@ use App\Http\Controllers\RoleController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\OrderController;
+use App\Http\Controllers\StripePaymentController;
 
 
 /*
@@ -92,6 +93,16 @@ Route::middleware(['auth','role:Super-Admin|Admin|Sub-Admin'])->group(function (
 
 
 
+    //order route
+      Route::get('/order/list', [OrderController::class, 'orderList'])->name('order.list');
+      Route::get('/orders/edit/{id}', [OrderController::class, 'orderEdit'])->name('order.edit');
+      Route::post('/orders/edit/{id}', [OrderController::class,'orderUpdate'])->name('order.update');
+
+
+
+
+
+
 
 
 });
@@ -122,12 +133,23 @@ Route::get('/cart/remove/{id}',[CartController::class, 'cartRemove'])->name('car
 Route::post('/cart/update-ajax/{id}', [CartController::class, 'updateAjax']);
 Route::get('/clear',[CartController::class, 'cartClear'])->name('cart.clear');
 
+//checkout through qr
+Route::get('/payment/checkout',[OrderController::class, 'createQr'])->name('check.out.qr');
 
 
 //checkout routes
 
 Route::get('/checkout',[OrderController::class, 'create'])->name('check.out');
 Route::post('/checkout',[OrderController::class,'store'])->name('checkout.store');
+
+
+Route::controller(StripePaymentController::class)->group(function(){
+
+    Route::get('stripe', 'stripe');
+
+    Route::post('stripe', 'stripePost')->name('stripe.post');
+
+});
 
 
 

@@ -15,9 +15,9 @@ class CartController extends Controller
         $total=\Cart::getTotal();
         $items = \Cart::getContent();
 
-         if(empty($items)){
-            return route('cart')->with('error','Does not have any product added.');
-        }
+        //  if ($items->isEmpty()) {
+        //         return back()->with('error', 'Does not have any product added.');
+        //     }
 
             return view('frontend.cart',compact('items','total'));
     }
@@ -92,5 +92,5 @@ public function updateAjax(Request $request, $id)
 
 
 
-   
+
 }

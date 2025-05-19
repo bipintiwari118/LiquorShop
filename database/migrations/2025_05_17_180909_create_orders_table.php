@@ -16,9 +16,8 @@ return new class extends Migration
             $table->string('name');
             $table->string('email');
             $table->string('phone');
-            $table->string('city');
             $table->string('address');
-            $table->enum('payment_method', ['cod', 'stripe']);
+            $table->enum('delivery', ['pending', 'delivered'])->default('pending');
             $table->enum('status', ['pending', 'paid'])->default('pending');
             $table->decimal('total', 10, 2);
             $table->timestamps();

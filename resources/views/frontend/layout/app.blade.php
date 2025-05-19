@@ -21,6 +21,7 @@
     <link href="{{ asset('frontend/css/style.css') }}" rel="stylesheet" />
     <!-- responsive style -->
     <link href="{{ asset('frontend/css/responsive.css') }}" rel="stylesheet" />
+    {{-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" /> --}}
     @yield('styles')
 </head>
 
@@ -257,6 +258,7 @@
     <script src="{{ asset('frontend/js/bootstrap.js') }}"></script>
     <!-- custom js -->
     <script src="{{ asset('frontend/js/custom.js') }}"></script>
+    <script type="text/javascript" src="https://js.stripe.com/v2/"></script>
     @stack('scripts')
 </body>
 
