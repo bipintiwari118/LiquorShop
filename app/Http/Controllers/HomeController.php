@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Product;
+use App\Models\Order;
+use App\Models\OrderItem;
 use App\Models\Category;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\ContactFormMail;
@@ -83,6 +85,35 @@ class HomeController extends Controller
         }
 
 
+
+
+
+
+
+
+        public function dashboard()
+        {
+            $totalProducts = Product::count();
+            $totalOrders = Order::count();
+            $paidOrders = Order::where('status', 'paid')->count();
+            $pendingOrders = Order::where('status', '!=', 'paid')->count();
+            $recentOrders = Order::latest()->take(5)->get();
+
+            $orderChartLabels = Order::selectRaw('DATE(created_at) as date')->groupBy('date')->pluck('date');
+            $orderChartData = $orderChartLabels->map(function($date) {
+                return Order::whereDate('created_at', $date)->count();
+            });
+
+            $categories = Product::selectRaw('category, COUNT(*) as count')->groupBy('category')->get();
+            $categoryLabels = $categories->pluck('category');
+            $categoryData = $categories->pluck('count');
+
+            return view('dashboard', compact(
+                'totalProducts', 'totalOrders', 'paidOrders', 'pendingOrders',
+                'recentOrders', 'orderChartLabels', 'orderChartData',
+                'categoryLabels', 'categoryData'
+            ));
+        }
 
 
 
