@@ -96,8 +96,13 @@ Route::middleware(['auth','role:Super-Admin|Admin|Sub-Admin'])->group(function (
     //order route
       Route::get('/order/list', [OrderController::class, 'orderList'])->name('order.list');
       Route::get('/orders/edit/{id}', [OrderController::class, 'orderEdit'])->name('order.edit');
-      Route::post('/orders/edit/{id}', [OrderController::class,'orderUpdate'])->name('order.update');
+      Route::get('/orders/edit/{id}', [OrderController::class, 'orderEdit'])->name('order.edit');
+      Route::get('/orders/view/{id}', [OrderController::class,'orderView'])->name('order.view');
       Route::get('/complete/order/list', [OrderController::class, 'completedOrders'])->name('complete.order.list');
+      Route::get('/orders/delete/{id}', [OrderController::class, 'orderDelete'])->name('order.delete');
+      Route::post('/orders/update/{id}', [OrderController::class,'orderUpdate'])->name('order.update');
+
+
 
 
 
@@ -117,6 +122,8 @@ require __DIR__.'/auth.php';
 
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::get('/contact', [HomeController::class, 'contact'])->name('contact');
+Route::post('/contact-submit', [HomeController::class, 'submitForm'])->name('contact.submit');
 Route::get('/beer', [HomeController::class, 'beerShow'])->name('beer.show');
 Route::get('/rum', [HomeController::class, 'rumShow'])->name('rum.show');
 Route::get('/vodka', [HomeController::class, 'vodkaShow'])->name('vodka.show');

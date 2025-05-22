@@ -6,6 +6,9 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Order;
 use App\Models\OrderItem;
+use App\Mail\OrderMail;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Str;
 
 class OrderController extends Controller
 {
@@ -91,13 +94,30 @@ class OrderController extends Controller
     //for backend
 
 
-public function orderList()
+public function orderList(Request $request)
 {
     // Orders that are NOT both delivered and paid
+
+   $search = $request->input('search');
+
+   if ($search) {
+         $orders = Order::when($search, function ($query, $search) {
+             $query->where('name', 'like', "%{$search}%")
+              ->orWhere('email', 'like', "%{$search}%")
+              ->orWhere('id', $search);
+    })->latest()->paginate(10);
+    }
+    else{
+
+
+
     $orders = Order::where(function($q) {
         $q->where('delivery', '!=', 'delivered')
           ->orWhere('status', '!=', 'paid');
-    })->paginate(5);
+    })->latest()->paginate(5);
+
+
+     }
 
 
     return view('admin.order.list', compact('orders'));
@@ -138,18 +158,53 @@ public function orderUpdate(Request $request,$id){
 
             ]);
 
+              // ✅ Send email only if delivery is 'delivered' AND status is 'paid'
+    if (strtolower($order->delivery) === 'delivered' && strtolower($order->status) === 'paid') {
+        Mail::to($order->email)->send(new OrderMail($order));
+    }
+
              return redirect()->route('order.list')->with('success', 'Order updated successfully!');
 
 }
 
-public function completedOrders()
+public function completedOrders(Request $request)
 {
+
+      $search = $request->input('search');
+
+   if ($search) {
+         $orders = Order::when($search, function ($query, $search) {
+             $query->where('name', 'like', "%{$search}%")
+              ->orWhere('email', 'like', "%{$search}%")
+              ->orWhere('id', $search);
+    })->latest()->paginate(10);
+    }else{
     $orders = Order::where('delivery', 'delivered')
         ->where('status', 'paid')
-        ->paginate(5);
+        ->latest()->paginate(5);
+
+    }
 
     return view('admin.order.completeOrder', compact('orders'));
 }
+
+
+public function orderDelete($id){
+        $order = Order::findOrFail($id);
+        $order->delete();
+
+          return redirect()->route('order.list')->with('success', 'Order deleted successfully!');
+}
+
+
+public function orderView($id){
+
+        $order = Order::with('orderItem')->findOrFail($id);
+        return view('admin.order.view',compact('order'));
+
+}
+
+
 
 
 }

@@ -64,8 +64,19 @@ class ProductController extends Controller
     }
 
 
-    public function list(){
-        $products = Product::paginate(6);
+    public function list(Request $request){
+         $search = $request->input('search');
+
+    if ($search) {
+         $products = Product::when($search, function ($query, $search) {
+             $query->where('title', 'like', "%{$search}%")
+              ->orWhere('category', 'like', "%{$search}%")
+              ->orWhere('price', $search);
+    })->latest()->paginate(10);
+    }
+    else{
+        $products = Product::latest()->paginate(6);
+    }
         return view('admin.product.list', compact('products'));
     }
 

@@ -32,7 +32,7 @@
         <div class="container">
             <nav class="navbar navbar-expand-lg custom_nav-container ">
                 <a class="navbar-brand" href="{{ route('home') }}"><img width="200"
-                        src="{{ asset('frontend/images/logo.png') }}" alt="#" /></a>
+                        src="{{ asset('frontend/images/logo_online_liqour_shop-removebg-preview.png') }}" alt="#" /></a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse"
                     data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
                     aria-label="Toggle navigation">
@@ -71,7 +71,7 @@
                             <a class="nav-link" href="{{ route('snack.show') }}">Snacks</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="">Contact</a>
+                            <a class="nav-link" href="{{ route('contact') }}">Contact</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('cart') }}">
@@ -132,13 +132,14 @@
                                     <g>
                                     </g>
                                 </svg>
+                                <sup>{{\Cart::getContent()->count() }}</sup>
                             </a>
                         </li>
-                        <form class="form-inline">
+                        {{-- <form class="form-inline">
                             <button class="btn  my-2 my-sm-0 nav_search-btn" type="submit">
                                 <i class="fa fa-search" aria-hidden="true"></i>
                             </button>
-                        </form>
+                        </form> --}}
                         <!-- Conditional Buttons -->
                         {{-- @if (Auth::check())
                             <!-- Show Logout Button if User is Logged In -->
@@ -170,7 +171,7 @@
                 <div class="col-md-4">
                     <div class="full">
                         <div class="logo_footer">
-                            <a href="#"><img width="210" src="{{ asset('frontend/images/logo.png') }}"
+                            <a href="#"><img width="210" src="{{ asset('frontend/images/logo_online_liqour_shop-removebg-preview.png') }}"
                                     alt="#" /></a>
                         </div>
                         <div class="information_f">
@@ -190,7 +191,7 @@
                                         <ul>
                                             <li><a href="{{ route('home') }}">Home</a></li>
                                             <li><a href="">Blog</a></li>
-                                            <li><a href="">Contact</a></li>
+                                            <li><a href="{{ route('contact') }}">Contact</a></li>
                                         </ul>
                                     </div>
                                 </div>
