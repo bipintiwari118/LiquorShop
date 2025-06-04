@@ -1,4 +1,4 @@
-<x-guest-layout>
+{{-- <x-guest-layout>
     <div class="flex flex-col overflow-y-auto md:flex-row">
         <div class="h-32 md:h-auto md:w-1/2">
             <img aria-hidden="true" class="object-cover w-full h-full"
@@ -68,4 +68,4 @@
                 </p>
             </div>
         </div>
-</x-guest-layout>
+</x-guest-layout> --}}
