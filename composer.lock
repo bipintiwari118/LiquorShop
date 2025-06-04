@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "9941a4e5bd766e183613d2a2d49e46d7",
+    "content-hash": "bc4d29093ab539e0b2596bc117c460c0",
     "packages": [
         {
             "name": "brick/math",
@@ -3441,16 +3441,16 @@
         },
         {
             "name": "spatie/laravel-permission",
-            "version": "6.17.0",
+            "version": "6.19.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spatie/laravel-permission.git",
-                "reference": "02ada8f638b643713fa2fb543384738e27346ddb"
+                "reference": "0cd412dcad066d75caf0b977716809be7e7642fd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spatie/laravel-permission/zipball/02ada8f638b643713fa2fb543384738e27346ddb",
-                "reference": "02ada8f638b643713fa2fb543384738e27346ddb",
+                "url": "https://api.github.com/repos/spatie/laravel-permission/zipball/0cd412dcad066d75caf0b977716809be7e7642fd",
+                "reference": "0cd412dcad066d75caf0b977716809be7e7642fd",
                 "shasum": ""
             },
             "require": {
@@ -3512,7 +3512,7 @@
             ],
             "support": {
                 "issues": "https://github.com/spatie/laravel-permission/issues",
-                "source": "https://github.com/spatie/laravel-permission/tree/6.17.0"
+                "source": "https://github.com/spatie/laravel-permission/tree/6.19.0"
             },
             "funding": [
                 {
@@ -3520,7 +3520,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2025-04-08T15:06:14+00:00"
+            "time": "2025-05-31T00:50:27+00:00"
         },
         {
             "name": "stripe/stripe-php",
